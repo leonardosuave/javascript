@@ -16,8 +16,24 @@
 </head>
 <body>
     <h1>Iniciando estudos com DOM</h1>
-    <p>Aqui vai o resultado</p>
+    <p id="primeiro">Aqui vai o resultado</p>
     <p>Aprendendo a usar o <strong>DOM</strong></p>
-    <div>Clique em mim</div>
+    <div id="msg">Clique em mim</div>
+    <script> //modificacoes por JavaScript
+        var corpo = window.document.body
+        var p1 = window.document.getElementsByTagName('p')[1] //d.innerText = 'Escreva algo' , vai substituir o que esta em ('p')[1] pela mensagem 'Escreva algo'
+        var d = window.document.getElementById ('msg')
+        var s = window.document.querySelector ('p#primeiro') //funciona normalmente com class, basta substituir o # por . (querySelector funciona com navegadores mais recentes)
+        corpo.style.background = 'green'        
+        
+        window.document.writeln(d.innerText + '<br>')
+        window.document.writeln(p1.innerHTML + '<br>')
+        window.document.writeln(s.innerText)
+
+        p1.style.background = 'black' //Edita o background referente a fonte vinculada na variavel p1
+        p1.style.color = 'red' //Edita a cor da letra da fonte vinculada a variavel p1
+        
+
+    </script>
 </body>
 </html>
