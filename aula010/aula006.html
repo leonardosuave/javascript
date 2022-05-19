@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos DOM</title>
+    <style>
+        div#area {
+            font: normal 16px arial;
+            background-color: green;
+            color: white;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="area" onclick="clicar()" onmouseenter="entrar()" onmouseout="sair()"> <!--Vai disparar os seguinter eventos; Clicar, Entrar e Sair-->
+        Intereja.....
+    </div>
+
+    <script> //Exemplo de eventos pelo HTML
+        var a = window.document.getElementById ('area') //Neste caso a var a vai englobar toda JS. (Nao é o mais indicado).
+        function clicar() {            
+            a.innerText = 'Clicou!' //Quando clicar vai aparecer "Clicou!"
+            a.style.background = 'blue' //Quando clicar também vai mudar a cor da DIV
+        }
+        function entrar () {
+            a.innerText = 'Entrou!' //Quando o mouse passar em cima da DIV vai escrever "Entrou!"
+        }
+        function sair() {
+            a.innerText ='Saiu!' //Quando o mouse sair de cima da DIV vai escrever "Saiu!"
+            a.style.background ='green' //A DIV volta a ter cor verde quando o mouse sair de cima da DIV
+        }
+    </script>
+</body>
+</html>
