@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somando números</title>
+    <style>
+        section#container {
+            background-color: white;            
+            height: 50vh;            
+            padding: 10%;
+            position: relative;
+        }
+    
+        article#conteudo {
+            font: normal 16px arial;
+            border: 1px solid black;
+            width: 450px;
+            height: 200px;
+            text-align: center;        
+            padding: 15px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+        div#res {
+            margin-top: 25px;
+        }
+        input {
+            background-color: aquamarine;
+            margin: .5vh;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <section id="container">
+        <article id="conteudo">
+            <h1>Somando Valores</h1>
+            <input type="number" name="txtn1" id="txtn1"> +
+            <input type="number" name="txtn2" id="txtn2">
+            <input type="button" value="somar" onclick="somar()">
+            <div id="res">Resultado</div>
+        </article>
+    </section>
+
+    <script>
+        function somar () {
+            var tn1 = window.document.getElementById('txtn1') //VAR referente a caixa de texto.
+            var tn2 = window.document.querySelector('input#txtn2') //querySelector apenas para treinamento. Poderia ser por getElementById.
+            var res = window.document.getElementById('res')
+            var n1 = Number(tn1.value) //Converter os valores da caixa de texto para números inteiros.
+            var n2 = Number.parseInt(tn2.value) //Outra formula de converter a caixa de texto para número inteiro.
+            var s = n1 + n2
+            res.innerHTML = `A soma entre ${n1} e  ${n2} é <strong>${s}</strong>`
+            res.style.background = 'black'
+            res.style.color = 'white'
+        }
+    </script>
+</body>
+</html>
