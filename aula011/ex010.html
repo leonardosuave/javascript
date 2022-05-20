@@ -17,7 +17,7 @@
         function calcular () {
             var txtv = window.document.getElementById('txtvel')
             var res = window.document.getElementsByClassName('res')[0]
-            var vel = Number.parseInt(txtvel.value)
+            var vel = Number.parseInt(txtvel.value) //passar de string para Number
             res.innerHTML = `<p>Sua velocidade atual é de <strong>${vel}</strong> kM/h</p>`
             if (vel > 60) {
                 res.innerHTML += `<p>Você está <strong>Multado</strong> por excesso de velocidade</p>`

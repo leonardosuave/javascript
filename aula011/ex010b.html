@@ -15,8 +15,8 @@
         function nascionalidade () {
             var p = window.document.getElementById('nasc')
             var res = window.document.getElementById('res')                          
-            res.innerHTML = `<p>Você nasceu em ${p.value}</p>`
-            if ((p.value.toLowerCase()) != 'brasil') {
+            res.innerHTML = `<p>Você nasceu em ${p.value}</p>` //value passa p para string
+            if ((p.value.toLowerCase()) != 'brasil') { //value.toLowerCase() passa p para string e tudo letra minuscula 
                 res.innerHTML += `<p>Você é <strong>estrangeiro</strong></p>`
             } else {
                 res.innerHTML += `<p>Você é <strong>brasileiro</strong></p>`
