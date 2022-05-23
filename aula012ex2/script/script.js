@@ -10,7 +10,7 @@ function verificar () {
         var sexo = window.document.getElementsByName('radsex')        
         var genero = ''
         var img = document.createElement('img') //Mesma coisa que criar uma <img> em HTML
-        img.setAttribute('id','foto') // Mesma coisa que adicioanr id="foto" em uma tag <img>
+        
         if (sexo[0].checked) {
             genero = 'Homem'
             if (idade >= 0 && idade <=12) {
