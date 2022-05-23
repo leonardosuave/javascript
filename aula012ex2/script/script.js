@@ -14,24 +14,32 @@ function verificar () {
         if (sexo[0].checked) {
             genero = 'Homem'
             if (idade >= 0 && idade <=12) {
-                img.setAttribute('src','imagens/bebe-homem-c.png')             
+                img.setAttribute('src','imagens/bebe-homem-c.png')   
+                window.document.body.style.background = '#D7BFA6'          
             } else if (idade >12 && idade <=21) {
                 img.setAttribute('src','imagens/jovem-h-c.png')
+                window.document.body.style.background = '#F28705'
             } else if (idade >21 && idade<=50) {
                 img.setAttribute('src','imagens/homem-c.png')
+                window.document.body.style.background = '#556573'
             } else {
                 img.setAttribute('src','imagens/idoso-c.png')
+                window.document.body.style.background = '#406573'
             }
         } else  if (sexo[1].checked) {
             genero = 'Mulher'
             if (idade >=0 && idade <=12) {
                 img.setAttribute('src','imagens/bebe-mulher-c.png')
+                window.document.body.style.background = '#D7BFA6'
             } else if (idade >12 && idade <=21) {
                 img.setAttribute('src','imagens/jovem-m-c.png')
+                window.document.body.style.background = '#F28705'
             } else if (idade > 21 && idade <=50) {
                 img.setAttribute('src','imagens/mulher-c.png')
+                window.document.body.style.background = '#556573'
             } else {
                 img.setAttribute('src','imagens/idosa-c.png')
+                window.document.body.style.background = '#406573'
             }
         } 
         res.style.textAlign = 'center'
