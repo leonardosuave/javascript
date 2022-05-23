@@ -14,7 +14,7 @@ function verificar () {
         if (sexo[0].checked) {
             genero = 'Homem'
             if (idade >= 0 && idade <=12) {
-                img.setAttribute('src','imagens/bebe-homem-c.png')   
+                img.setAttribute('src','imagens/bebe-homem-c.png') //Método de add imagens direto em JavaScript
                 window.document.body.style.background = '#D7BFA6'          
             } else if (idade >12 && idade <=21) {
                 img.setAttribute('src','imagens/jovem-h-c.png')
@@ -45,6 +45,6 @@ function verificar () {
         res.style.textAlign = 'center'
         res.style.padding = '20px'
         res.innerHTML = `Detectamos ${genero} com ${idade} anos.`
-        res.appendChild(img)
+        res.appendChild(img) // para aparecer a imagem depois do ultimo res,innerHTML
     }      
 }
