@@ -1,9 +1,9 @@
-function carregar() {
-    var msg = window.document.getElementById('msg')
+function carregar() { //atribuição de variaveis de uma função
+    var msg = window.document.getElementById('msg') 
     var img = window.document.getElementById('imagem')
     var data = new Date()
     var hora = data.getHours()    
-    if (hora >=0 && hora < 12) {
+    if (hora >=0 && hora < 12) { //condições ainhadas (composta)
         msg.innerHTML = 'Bom dia'
         msg.innerHTML += `<br>Agora são ${hora.toFixed(2).replace ('.',':')} horas.`        
         img.src = 'imagens/manha-c.png'
