@@ -5,12 +5,22 @@ num[4] = 3 //método para adicionar um valor dentro de um índice da var compost
 num.push(7) // adiciona um indice no final com o valor 7
 console.log(`Nosso valor do vetor é ${num} e tem um total de ${num.length} índices`)
 console.log (`O terceiro valor do vetor é ${num[2]}`)
-c = 0
-do {
-    console.log(`O valor do elemento é ${num[0]}`)
-    c++
-} while (c <= (num.length - 1))
 
-for(c = 0; c<=(num.length - 1); c++) {
+for(var c = 0; c<=(num.length - 1); c++) {
     console.log(`O valor do índice é ${num[c]}`)
 }
+
+/* Método com DO WHILE
+c = 0
+do {
+    console.log(`O valor do elemento é ${num[c]}`)
+    c++
+} while (c <= (num.length - 1))
+*/
+/* Método com While
+c = 0
+while (c <= (num.length - 1)) {
+    console.log (`agora é ${num[c]}`)
+    c++
+}
+*/
