@@ -2,7 +2,7 @@ function parimpar (v) {
     if (v%2==0) {
         return 'Par!'
     } else {
-        return 'Impar!'
+        return 'Impar!' // As '' é devido impar ser string (escrito)
     }
 }
 //Assim passa direto
