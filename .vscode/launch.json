@@ -4,7 +4,6 @@
     // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-    
         {
             "type": "pwa-node",
             "request": "launch",
@@ -12,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\aula014ex\\ex016\\script\\script.js"
+            "program": "${workspaceFolder}\\aula016\\funcaofatrecursiva.js"
         }
     ]
 }
