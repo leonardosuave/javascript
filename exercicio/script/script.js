@@ -28,6 +28,8 @@ function adicionar() {
     } else {
         window.alert('ERRO')
     }
+    //Para limpar o campo e focar o campo de inserir valores quando adicionar um valor 
+    //Para limpar tela de resultados finais quando inserir novos valores
     num.value = ''
     num.focus()
     res.innerHTML = ''

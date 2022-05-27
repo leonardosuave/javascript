@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\aula016\\funcaofatrecursiva.js"
+            "program": "${workspaceFolder}\\exercicio\\script\\script.js"
         }
     ]
 }
