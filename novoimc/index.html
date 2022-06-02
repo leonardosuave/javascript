@@ -13,15 +13,13 @@
 
   <section class="container">
     <h1>Calcule seu IMC</h1>
-    <form action="/" id="formulario" method="POST">
-      <label for="peso">Peso</label>
-      <input type="text" id="peso" name="peso">
-      <label for="altura">Altura</label>
-      <input type="text" id="altura" name="altura">
-      <button type="submit">Enviar</button>
-    </form>
+    Peso: <br> 
+    <input type="number" name="txpeso" id="peso">
+    <br>Altura <br>
+    <input type="number" name="txaltura" id="altura">
+    <br><input type="button" value="Calcular" onclick="calcular()">
 
-    <div id="resultado"></div>
+    <div id="res"></div>
   </section>
 
   <script src="./assets/js/main.js"></script>
