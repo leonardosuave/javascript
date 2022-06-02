@@ -52,9 +52,12 @@ function setResultado (msg, verdadeiro) {
   const resultado = document.querySelector('#resultado');
 
   const p = criaP();
-  
+  if (verdadeiro) {
+    p.classList.add('paragrafo-resultado')
+  } else {
+    p.classList.add('bad')
+  }
 
   p.innerHTML = msg;
   resultado.appendChild(p)
-
 }
