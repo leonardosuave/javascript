@@ -23,6 +23,8 @@ form.addEventListener('submit', function (evento) {
   const imc = getImc (peso, altura);
   const nivelimc = getNivelImc (imc);
   const msg = `Seu IMC é ${imc} (${nivelimc})`
+
+  setResultado(msg, true);
 });
 
 function getImc (peso, altura) {
@@ -50,6 +52,8 @@ function setResultado (msg, verdadeiro) {
   const resultado = document.querySelector('#resultado');
 
   const p = criaP();
+  
+
   p.innerHTML = msg;
   resultado.appendChild(p)
 
