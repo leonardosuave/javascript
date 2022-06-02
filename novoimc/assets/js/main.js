@@ -1,3 +1,5 @@
+//Meu algoritmo simples (Sem uso de funções)
+
 var peso = window.document.getElementById('peso')
 var altura = window.document.getElementById('altura')
 var res = window.document.getElementById('res')
