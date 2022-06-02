@@ -2,33 +2,32 @@
 const form = document.querySelector('#formulario');
 
 form.addEventListener('submit', function (evento) {
-  evento.defaultPrevented();
-  console.log('Evento previnido')
+  evento.preventDefault();
 
-  const inputpeso = document.querySelector('#peso')
-  const inputaltura = document.querySelector('#altura')
+  const inputpeso = evento.target.querySelector('#peso');
+  const inputaltura = evento.target.querySelector('#altura');
 
-  const peso = Number(inputpeso.value)
-  const altura = Number(inputaltura.value)
+  const peso = Number(inputpeso.value);
+  const altura = Number(inputaltura.value);
 
   if (!peso) {
-    setResultado('Peso inválido', false)
+    setResultado('Peso inválido', false);
     return;
   }
   if (!altura) {
-    setResultado('Altura inválida', false )
+    setResultado('Altura inválida', false );
     return;
   }
 
   const imc = getImc (peso, altura);
   const nivelimc = getNivelImc (imc);
-  const msg = `Seu IMC é ${imc} (${nivelimc})`
+  const msg = `Seu IMC é ${imc} (${nivelimc}).`;
 
   setResultado(msg, true);
 });
 
 function getImc (peso, altura) {
-  const imc = peso/altura
+  const imc = peso/altura;
   return imc.toFixed(2);
 }
 
@@ -50,14 +49,16 @@ function criaP() {
 
 function setResultado (msg, verdadeiro) {
   const resultado = document.querySelector('#resultado');
+  resultado.innerHTML = '';
 
   const p = criaP();
+  
   if (verdadeiro) {
-    p.classList.add('paragrafo-resultado')
+    p.classList.add('paragrafo-resultado');
   } else {
-    p.classList.add('bad')
+    p.classList.add('bad');
   }
 
   p.innerHTML = msg;
-  resultado.appendChild(p)
+  resultado.appendChild(p);
 }
