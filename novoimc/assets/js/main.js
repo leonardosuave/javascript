@@ -6,7 +6,10 @@ var res = window.document.getElementById('res')
 
 function calcular() {
   if (peso.value.length == 0 || altura.value.length == 0) {
-    res.innerHTML = '[ERRO] Peso ou Altura invalido'
+    //Exemplo passando resposta por P (criado dentro de res.)
+    var p = window.document.createElement('p')
+    p.innerHTML = '[ERRO] Peso ou Altura invalido'
+    res.appendChild(p);
   } else {
     var imc = (Number(peso.value) / Number(altura.value))
     if (imc < 18.5) {
