@@ -10,11 +10,11 @@ form.addEventListener('submit', function (evento) {
   
   if (!peso) {
     resultado('[ERRO] Peso inválido!', false)
-    return 
+    return;
   } 
   if (!altura) {
     resultado('[ERRO] Altura inválida!', false)
-    return
+    return;
   }
   
   var imc = calculoImc(peso, altura);
