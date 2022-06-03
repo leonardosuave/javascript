@@ -1,7 +1,6 @@
-function recebe () {
 var formulario = window.document.querySelector('.form');
+var res = window.document.querySelector('.res');
 var pessoas = [];
-var resultado = document.querySelector('.res')
 
 formulario.addEventListener('submit', function (evento){
     evento.preventDefault();
@@ -12,8 +11,9 @@ formulario.addEventListener('submit', function (evento){
     var altura = document.querySelector('.altura');
     
     
+    
 
-    pessoas.push ({
+    pessoas.push({
         nome: nome.value,
         sobrenome: sobrenome.value,
         peso: peso.value,
@@ -23,11 +23,29 @@ formulario.addEventListener('submit', function (evento){
     console.log(pessoas)
 
     var msg = `<p>${nome.value} ${sobrenome.value} ${peso.value} ${altura.value}</p>`
-    resultado.innerHTML += `${msg}`
+    recebe(msg) 
 
     nome.value = ''
     sobrenome.value = ''
     peso.value = ''
     altura.value = ''
+
 })
+
+/* METODO PARA ADICIONAR A MSG EM UM (P).....Não vai apagar a mensagem anterior!!!!
+function criaP() {
+    var p = document.createElement('p')
+    return p 
 }
+
+function recebe (msg) {
+    var p = criaP()    
+    p.innerHTML = msg
+    res.appendChild(p)
+        
+}
+*/
+
+function recebe(msg) {
+    res.innerHTML = msg
+};
