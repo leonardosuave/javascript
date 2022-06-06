@@ -1,0 +1,15 @@
+body {
+    background-color: darkcyan;
+}
+
+section {
+    background-color: white;
+    margin: 70px 150px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+section p {
+    padding: 10px 20px;
+}
