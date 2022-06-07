@@ -1,4 +1,4 @@
-//Continue -->Vai ate o final da interação.
+//Continue -->Vai ate a proxima interação.
 //Break -->Vai finalizar a interação.
 
 const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9 ];
