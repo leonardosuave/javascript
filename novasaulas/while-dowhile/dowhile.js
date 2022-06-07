@@ -5,7 +5,12 @@ function random (min, max) {
 
 const min = 1;
 const max = 40;
-let rand = 10
+
+/* 
+Para Do While pode eliminar a linha abaixo e colocar dentro do do{} inserindo var no lugar de let, ou simplesmente deixar apenas rand = ....
+
+let rand = random(min, max) 
+*/
 
 do {
    rand = random(min,max);
