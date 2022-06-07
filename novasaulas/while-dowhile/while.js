@@ -6,10 +6,12 @@ const min = 1;
 const max = 50;
 
 //Inserindo let teremos uma variavel temporaria e assim deve-se chamar ela dentro da condição While para substituir
-var rand = random(min, max); 
+let rand = random(min, max); 
 
 while (rand !== 10) { //vai rodar até achar o número 10
-      
+
+    //caso fosse var rand dentro de While, poderia excluir a chamada de var fora do while --> let rand. Devido ser uma variavel que vai aceitar substituição de valores.
+    rand = random(min, max);  
     console.log(rand);
 }
     
