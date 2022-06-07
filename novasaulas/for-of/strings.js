@@ -2,13 +2,18 @@
 //For In - Retorna o índice ou chave (String, arrays ou objetos)
 //For Of - Retorna o valor em si (iteráveis, arrays ou strings)
 
-const pessoas = {
-    nome: 'Leonardo',
-    sobrenome: 'Suave',
-    idade: 26
-}
-for (let i of pessoas) {
+const nome = 'Luiz Otávio'
+
+for (let i of nome) {
     console.log(i)
 }
+/*
+for (let i = 0; i < nome.length; i++){
+    console.log(nome[i])
+}
 
-//[ERRO]. i com OF não é interavel. Não funciona For Of em Objetos.
+for (let i in nome) {
+    console.log(nome[i])
+}
+*/
+
