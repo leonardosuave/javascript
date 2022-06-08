@@ -8,8 +8,8 @@ function relogio(){
     minute: '2-digit',
     second: '2-digit',
     hour12: false,
-  })
-}
+    })
+  }
 
   const relogio = document.querySelector('.relogio');
   let segundos = 0; //Essa variavel é importante para armazenar o valor do cronometro caso pause e volte a iniciar.
@@ -28,7 +28,7 @@ function relogio(){
     segundos++; //para passar os segundos
     relogio.innerHTML = criaHoraDosSegundos(segundos) // para passar segundos formatados
     }, 1000);
-}
+  }
 
   document.addEventListener('click', function(e){
     const elemento = e.target //e.target vai indicar qual elemento está sendo clicado
@@ -50,7 +50,7 @@ function relogio(){
     if(elemento.classList.contains('zerar')){
       clearInterval(timer);
       relogio.innerHTML = '00:00:00';
-      segundos = 0 // Indica que quando for zerado a variavel global vai receber o valor zero e quando iniciar o contador novamente não vai voltar dos zegundos q foram zerados.
+      segundos = 0 // Indica que quando for zerado a variavel global vai receber o valor zero e quando iniciar o contador novamente não vai voltar dos segundos q foram zerados.
       relogio.classList.remove('pausado') //vai remover a classe e vai mudar a cor com a css
     }  
   }) 
