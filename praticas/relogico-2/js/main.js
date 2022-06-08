@@ -55,4 +55,4 @@ function relogio(){
     }  
   }) 
 } 
-relogio()
+relogio();
