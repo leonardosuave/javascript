@@ -6,7 +6,7 @@ function mostraHora() {
         hour12: false
     });
 }
-setInterval(function() {console.log(mostraHora())}, 1000) //Por função anonima. (Mais rápido)
+setInterval(function() {console.log(mostraHora)}, 1000) //Por função anonima. (Mais rápido)
 /*Para definir um intervalo de tempo para uma função ser execultada em determinado momento --> setInterval(nome da funcao de repetição, tempo de repetição).
 
 colocar o nome da função que vai ser execultada dentro do parâmetro desta função e o tempo que será execultado separado por virgula --> 1 segundo == 1000 ms */
