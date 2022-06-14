@@ -2,7 +2,7 @@
 function Calculadora () {
   this.display = document.querySelector('.display');
 
-    this.inicia = () => {
+  this.inicia = () => {
     this.capturaCliques();
     this.pressionarEnter();
   }
