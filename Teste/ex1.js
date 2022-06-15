@@ -7,10 +7,5 @@ function SOMA() {
     return(Soma)
 };
 console.log(SOMA());
-let k = 0
-let soma = 0
-do {
-    soma = soma + k
-    console
-} while (k < 13) 
-console.log(soma)
+//O valor da SOMA é 78
+
