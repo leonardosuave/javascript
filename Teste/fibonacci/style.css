@@ -1,0 +1,35 @@
+body {
+    background-color: darkslategray;
+}
+section {
+    font-size: 1.3em;
+    background-color: white;
+    text-align: center;
+    height: 450px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+section > h1 {
+    background-color: darkcyan;
+    color: white;
+    padding: 10px;
+    margin-top: 0px;
+    border-bottom: 1px solid black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+section > p {    
+    margin-bottom: 0px;
+}
+
+div {
+    background-color: darkcyan;
+    color: white;
+    padding-top: -50px;
+    padding-bottom: 89px;
+    border-top: 1px solid black ;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
