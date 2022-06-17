@@ -3,14 +3,14 @@
 //Construtora = obrigatóriamente cria função com a primeira letra maiúscula Pessoa (new).
 
 //exemplo de função construtora.
-function Pessoa(nome, sobrenome) {
+function Pessoa(primeironome, segundosobrenome) {
     //atribrutos ou métodos privados
     const ID = 123456;
     const metodoInterno = function() {};
 
     //atributos ou métodos públicos
-    this.nome = nome;
-    this.sobrenome = sobrenome;
+    this.nome = primeironome;
+    this.sobrenome = segundosobrenome;
 
     this.metodo = function() {
         console.log(this.nome + ': sou um método');
