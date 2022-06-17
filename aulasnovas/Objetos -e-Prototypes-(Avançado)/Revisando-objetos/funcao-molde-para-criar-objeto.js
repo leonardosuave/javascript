@@ -23,6 +23,8 @@ function Pessoa(nome, sobrenome) {
     this.nome = nome;
     this.sobrenome = sobrenome;
     //this.nome = p1.nome. porém com this pode ser utilizado idependente do nome da var que chama a função(Por isso função Molde) e no caso com p1 é apenas para esta var e acaba o molde(Porque preciso identificar a var que chama a função).
+
+    //Object.freeze(this) - Para bloquear qualquer alteração que possa ser feito após criar o objeto.
 }
 
 const p3 = new Pessoa('Lucia', 'Helena'); //Objeto p3 criado conforme o MOLDE.
