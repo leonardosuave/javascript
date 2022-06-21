@@ -27,7 +27,7 @@ const p3 = Object.create(Produto.prototype)
 p3.nome = 'Regata'
 p3.preco = 37
 
-//Criando p3 já vinculado com Produto.prototype (criar chave manual / Opicional);
+//Criando p4 já vinculado com Produto.prototype (criar chave manual / Opicional);
 const p4 = Object.create(Produto.prototype, {
     nome: {
         enumerable: true,
