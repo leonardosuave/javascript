@@ -27,7 +27,7 @@ function ContaCorrente(agencia, conta, saldo, limite) {
 };
 ContaCorrente.prototype = Object.create(Conta.prototype); //Linka ContaCorrente no prototype de Conta.
 ContaCorrente.prototype.constructor = ContaCorrente; //ContaCorrente será o construtor do objeto.
-ContaCorrente.prototype.sacar = function(valorSaque) {
+ContaCorrente.prototype.sacar = function(valorSaque) { //Sobrepoem o Conta.prototype.sacar.
     if((this.saldo + this.limite) < valorSaque) {
         console.log(`Saldo insuficiente: R$${this.saldo}`)
         return 
@@ -38,7 +38,6 @@ ContaCorrente.prototype.sacar = function(valorSaque) {
 
 function ContaPoupança(agencia, conta, saldo) {
     Conta.call(this,agencia,conta,saldo); //Vai chamar Conta e passar agencia,conta e saldo para criar.
-    
 };
 ContaPoupança.prototype = Object.create(Conta.prototype); //Linka ContaCorrente no prototype de Conta.
 ContaPoupança.prototype.constructor = ContaPoupança; //ContaCorrente será o construtor do objeto.
