@@ -30,7 +30,7 @@ ValidaCPF.prototype.criaDigito = function(cpfParcial) { //Método que recebe os 
     },0)
     
     const digito = 11 - (total % 11);
-    return digito > 9 ? 0 : String(digito); //Verifica se o calculo é superior a 9 (por Expressão ternária).    
+    return digito > 9 ? '0' : String(digito); //Verifica se o calculo é superior a 9 (por Expressão ternária).    
 };
 
 ValidaCPF.prototype.isSequencia = function() {
