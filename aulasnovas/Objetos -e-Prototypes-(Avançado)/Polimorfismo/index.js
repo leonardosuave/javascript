@@ -8,9 +8,8 @@ function Conta(agencia, conta, saldo) {
 Conta.prototype.sacar = function(valorSaque) {
     if(this.saldo < valorSaque) {
         console.log(`Saldo insuficiente: R$${this.saldo}`)
-    
-    return 
-}
+        return 
+    }
     this.saldo -= valorSaque;
     this.verSaldo();
 }
@@ -31,9 +30,8 @@ ContaCorrente.prototype.constructor = ContaCorrente; //ContaCorrente será o con
 ContaCorrente.prototype.sacar = function(valorSaque) {
     if((this.saldo + this.limite) < valorSaque) {
         console.log(`Saldo insuficiente: R$${this.saldo}`)
-    
-    return 
-}
+        return 
+    }
     this.saldo -= valorSaque;
     this.verSaldo();
 }
