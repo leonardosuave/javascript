@@ -1,16 +1,17 @@
-//Métodos desacoplados
+//Tentando adaptar o método de manipular prototypes da factory function para constructor function. (Criou um Prototype:Object dentro de outro Prototype:Objetc)
+
 const falar = {
     falar() { 
         console.log(`${this.nome} está falando`)
     },
 }
 const comer = {
-    comer() {
+    Comer() {
         console.log(`${this.nome} está comendo`)
     },    
 }
 const beber = {
-    beber() {
+    Beber() {
         console.log(`${this.nome} está bebendo`)
     } 
 }
@@ -23,11 +24,11 @@ const PessoaPrototype = {...falar,...comer,...beber} //Vincula os métodos por s
 //const pessoaPrototype = Object.assign({}, falar, comer,beber);
 
 function Pessoa (nome,sobrenome) {
-    return Object.create(PessoaPrototype, {
-        nome: {value: nome}, //Posso colocar getter/setter, writable, enumerable...
-        sobrenome: {value: sobrenome}
-    }); //Para linkar 
-}
+        this.nome = nome,
+        this.sobrenome = sobrenome  
+};
 
-const p1 = Pessoa('Leonardo', 'Suave');
-console.log(p1)
+Pessoa.prototype = Object.create(PessoaPrototype);
+
+const p1 = new Pessoa('Leonardo', 'Suave');
+console.log(p1.falar())
