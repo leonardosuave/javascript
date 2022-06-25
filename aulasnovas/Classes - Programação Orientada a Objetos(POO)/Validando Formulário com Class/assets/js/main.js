@@ -24,7 +24,7 @@ class ValidaFormulario {
   }
 
   senhasValidas() {
-    let valid = true;
+    let valid = true; //flag
 
     const senha = this.formulario.querySelector('.senha')
     const repetirSenha = this.formulario.querySelector('.repetir-senha');
@@ -44,9 +44,9 @@ class ValidaFormulario {
   }
 
   checkCamposValidos() {
-    let valid = true;
+    let valid = true; //flag
 
-    //PARA EVITAR ACUMULE MSG DE ERRO EM UM MESMO CAMPO.
+    //PARA EVITAR QUE ACUMULE MSG DE ERRO EM UM MESMO CAMPO.
     for(let errorText of this.formulario.querySelectorAll('.error-text')) { //Vai pegar de todos os campos que ja possui a class error-text adicionado quando deu erro.
       errorText.remove() //Para remover novos avisos de erro em um mesmo campo.
     }
@@ -55,6 +55,7 @@ class ValidaFormulario {
     for(let campo of this.formulario.querySelectorAll('.validar')) {
       const label = campo.previousElementSibling.innerHTML
 
+      //Campo em branco
       if(!campo.value) {//Se não possui escrito, volta False (!false = true) e então ativa os comandos abaixo.
         this.criaErro(campo, `Campo ${label} não pode estar em branco.`)
         valid = false;
