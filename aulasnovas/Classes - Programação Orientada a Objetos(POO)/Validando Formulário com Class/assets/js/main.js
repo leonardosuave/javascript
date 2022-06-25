@@ -53,7 +53,7 @@ class ValidaFormulario {
 
     //
     for(let campo of this.formulario.querySelectorAll('.validar')) {
-      const label = campo.previousElementSibling.innerHTML
+      const label = campo.previousElementSibling.innerHTML //Retorna o elemento anterior referente ao mesmo nivel do campo (Neste caso retorna os label do html).
 
       //Campo em branco
       if(!campo.value) {//Se não possui escrito, volta False (!false = true) e então ativa os comandos abaixo.
