@@ -6,6 +6,8 @@ function criaTarefa(textoInput) {
   const lista = criarLi()
   lista.innerHTML = textoInput
   tarefas.appendChild(lista)
+  //tarefas.insertAdjacentElement('beforeend', lista) -> Mesma coisa que appendChild.
+  //tarefas.insertAdjacentElement('afterbegin', lista) -> Mesma coisa que appendChild.
   limparInput();
   criarBotaoApagar(lista);
   salvarTarefas();

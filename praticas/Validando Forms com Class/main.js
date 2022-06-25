@@ -23,13 +23,13 @@ class ValidaFormulario {
 
         if(senha.value !== repeatSenha.value) {
             valid = false
-            this.criaErro(senha, 'As senhas devem ser iguais')
-            this.criaErro(repeatSenha, 'As senhas devem ser iguais')
+            ValidaFormulario.criaErro(senha, 'As senhas devem ser iguais')
+            ValidaFormulario.criaErro(repeatSenha, 'As senhas devem ser iguais')
         }
 
         if(senha.value.length < 6 || senha.value.length > 12) {
             valid = false
-            this.criaErro(senha, 'Senha precisa ter entre 6 e 12 caracteres')
+            ValidaFormulario.criaErro(senha, 'Senha precisa ter entre 6 e 12 caracteres')
         }
         
         return valid;
@@ -46,12 +46,12 @@ class ValidaFormulario {
         
         //Para checar cada campo.
         for(let eachField of this.formulario.querySelectorAll('.validar')){
-            const label = eachField.previousElementSibling.innerHTML//Especifica o nome dos campos para preencher.
+            const label = eachField.previousElementSibling.innerHTML//Especifica o nome dos campos para preencher. (Neste caso volta o elemento irmão antecedente, Como está especificando o campo que tem class validar, entao vai puxar o irmao anterior que possui o nome corretamente do campo correspondete a class. validar)
             console.log(label)
 
             //Identificar se tem campo em branco.
             if(!eachField.value) {
-                this.criaErro(eachField, `${label} não pode estar em branco`)
+                ValidaFormulario.criaErro(eachField, `${label} não pode estar em branco`)
                 valid = false;
             };
 
@@ -67,7 +67,8 @@ class ValidaFormulario {
         return valid
     }
 
-    criaErro(campo, msg) {
+    //Todos os métodos deve chamar criaErro() pela class ValidaFormulario
+    static criaErro(campo, msg) {
         const div = document.createElement('div');
         div.innerHTML = msg;
         div.classList.add('error-text')
@@ -78,7 +79,7 @@ class ValidaFormulario {
         const cpf = new ValidaCPF(eachField.value) //Aqui que chamo a class ValidaCPF que está em outro arquivo.js.
 
         if(!cpf.valida()) { //valida() referênte ao método do arquvi ValidaCPF.
-            this.criaErro(eachField, 'CPF inválido');
+            ValidaFormulario.criaErro(eachField, 'CPF inválido');
             return false
         }
 
@@ -88,12 +89,12 @@ class ValidaFormulario {
     validaUsuario(eachField) {
         let valid = true
         if(eachField.value.length < 3 || eachField.value.length > 12) {
-            this.criaErro(eachField, 'Usuário deve ter entre 3 e 12 caracteres')
+            ValidaFormulario.criaErro(eachField, 'Usuário deve ter entre 3 e 12 caracteres')
             valid = false
         }
 
         if(!eachField.value.match(/^[a-zA-Z0-9]+$/g)){
-            this.criaErro(eachField, 'Usuário não pode ter caracteres especiais (@#$...)')
+            ValidaFormulario.criaErro(eachField, 'Usuário não pode ter caracteres especiais (@#$...)')
             valid = false;
         }
 
