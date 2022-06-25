@@ -1,20 +1,18 @@
 class ValidaFormulario {
     constructor() {
         this.formulario = document.querySelector('.formulario');
-        this.eventos();
-    }
 
-    eventos() {
+        //Maneira simplificada(sem this.evento(e) -> e this.handlesubmit(e))
         this.formulario.addEventListener('submit', (e) => {
-        e.preventDefault();//Previne que o formulário seja enviado.
-        const checkFields = this.checkValidField();
-        const checkSenhas = this.checkSenhas();
-
-        if(checkFields && checkSenhas){
-            alert('Formulario Enviado!')
-            this.formulario.submit();
-        }
-        })
+            e.preventDefault();//Previne que o formulário seja enviado.
+            const checkFields = this.checkValidField();
+            const checkSenhas = this.checkSenhas();
+    
+            if(checkFields && checkSenhas){
+                alert('Formulario Enviado!')
+                this.formulario.submit();
+            }
+            })
     }
 
     checkSenhas() {
@@ -73,7 +71,7 @@ class ValidaFormulario {
         const div = document.createElement('div');
         div.innerHTML = msg;
         div.classList.add('error-text')
-        campo.insertAdjacentElement('afterend', div);
+        campo.insertAdjacentElement('afterend', div); //Depois de termianr o elemento campo, insira o elemento div
     }
 
     validaCPF(eachField) {
