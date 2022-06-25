@@ -6,11 +6,6 @@ class ValidaFormulario {
 
     eventos() {
         this.formulario.addEventListener('submit', (e) => {
-            this.handleSubmit(e);
-        })
-    }
-
-    handleSubmit(e) {
         e.preventDefault();//Previne que o formulário seja enviado.
         const checkFields = this.checkValidField();
         const checkSenhas = this.checkSenhas();
@@ -19,6 +14,7 @@ class ValidaFormulario {
             alert('Formulario Enviado!')
             this.formulario.submit();
         }
+        })
     }
 
     checkSenhas() {
