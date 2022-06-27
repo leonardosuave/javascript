@@ -49,6 +49,7 @@ pessoa1.sacar(35)
 pessoa1.sacar(358);
 pessoa1.sacar(62);
 pessoa1.sacar(5);
+pessoa1.sacar(15)
 
 console.log()
 
