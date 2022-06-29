@@ -13,9 +13,7 @@ const request = obj => {
       //função de callback de sucesso
       obj.success(xhr.responseText);
     } else {
-      obj.error({
-        code: xhr
-      })
+      obj.error
     }
   })
 };
@@ -25,7 +23,7 @@ document.addEventListener('click', e => {
   const tag = elemento.tagName.toLowerCase();
 
   if(tag === 'a') {
-    e.preventDefault //Para prevenir o evento de carregar a nova página clicada. 
+    e.preventDefault() //Para prevenir o evento de carregar a nova página clicada. 
     carregaPagina(elemento);
   }
 })
