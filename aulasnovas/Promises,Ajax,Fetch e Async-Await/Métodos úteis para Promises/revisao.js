@@ -6,17 +6,17 @@ function criaTempo(min, max) {
 
 function esperaAi(msg, tempo) {
     return new Promise((resolve, reject) => {
-        if(typeof msg !== 'string') reject ('[ERRO], parâmetro não encontrado!');
-        setInterval( () => {
-            
+        
+        setTimeout( () => {
+            if(typeof msg !== 'string') reject ('[ERRO], parâmetro não encontrado!');
             resolve (msg);
         }, tempo)
     })
 }
 
-const promisse = [esperaAi('Pesquisando...', 1000), esperaAi('Filtrando valores', 1000), esperaAi('Valor encontrado', 1000), esperaAi('oi', 1000)];
-Promise.all(promisse).then( function (msg) {
+const promisse = [esperaAi('Pesquisando...', criaTempo(1,5)), esperaAi('Filtrando valores', criaTempo(1,5)), esperaAi('Valor encontrado', criaTempo(1,5)), esperaAi(3, criaTempo(1,5))];
+Promise.race(promisse).then( msg => {
     console.log(msg)
-}).catch( function (msgErro) {
+}).catch( msgErro => {
     console.log(msgErro)
-})
+});
