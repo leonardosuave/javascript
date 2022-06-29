@@ -21,6 +21,7 @@ const request = obj => {
 document.addEventListener('click', e => {
   const elemento = e.target;
   const tag = elemento.tagName.toLowerCase();
+  console.log(elemento)//apagar depois
 
   if(tag === 'a') {
     e.preventDefault() //Para prevenir o evento de carregar a nova página clicada. 
