@@ -14,8 +14,8 @@ function esperaAi(msg, tempo) {
 }
 
 const promisse = [esperaAi('Pesquisando...', criaTempo(1, 5)), esperaAi('Filtrando valores', criaTempo(1,5)), esperaAi('Valor encontrado', criaTempo(1, 5)), esperaAi('oi', criaTempo(1,5))];
-Promise.all(promisse).then( function (msg) {
+Promise.all(promisse).then(msg =>{
     console.log(msg)
-}).catch( function (msgErro) {
+}).catch(msgErro => {
     console.log(msgErro)
-})
+});
