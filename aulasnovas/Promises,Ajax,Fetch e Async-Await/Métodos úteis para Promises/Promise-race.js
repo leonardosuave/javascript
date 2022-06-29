@@ -11,8 +11,11 @@ function criaTempo(min, max) {
 function esperaAi(msg, tempo) {
     return new Promise((resolve, reject) =>{
 
-        if(typeof msg !== 'string') reject('BAD VALUE') //caso caia neste erro, vai Direcionar para o catch() e vai retornar apenas BAD VALUE e não vai executar os resolve(). NESTE CASO SEMPRE CAI AQUI, PORQUE O ERRO NÃO É DIRECIONADO PARA O SETTIMEOUT, CASO FOSSE LÁ TERIA CHANCE DE CAIR NO ERRO APENAS.
+        /*
+        if(typeof msg !== 'string') reject('BAD VALUE') //caso caia neste erro, vai Direcionar para o catch() e vai retornar apenas BAD VALUE e não vai executar os resolve(). NESTE CASO SEMPRE CAI AQUI, PORQUE O ERRO NÃO É DIRECIONADO PARA O SETTIMEOUT, CASO FOSSE LÁ TERIA CHANCE DE CAIR NO ERRO APENAS.*/
+        
         setTimeout(() => { 
+            if(typeof msg !== 'string') reject('BAD VALUE') //CHANCE DE CAIR NO ERRO APENAS.
             resolve(msg) 
         }, tempo); 
     });
