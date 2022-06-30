@@ -1,8 +1,10 @@
 //XMLHttpRequest -> Faz requisição de diversos tipos de dados, como:HTML, JSON, XML, texto puro, entre outros.
 
+//Método antigo(Sem PROMISES)
+
 const request = obj => {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET',method, obj.url, true)
+  xhr.open(obj.method, obj.url, true)
   xhr.send(); //refere-se se estivesse recebendo algum post de formulário.(Neste caso não esta).
 
   xhr.addEventListener('load', () => {
@@ -13,7 +15,7 @@ const request = obj => {
       //função de callback de sucesso
       obj.success(xhr.responseText);
     } else {
-      obj.error
+      obj.error(xhr.statusText)
     }
   })
 };
@@ -31,5 +33,21 @@ document.addEventListener('click', e => {
 
 function carregaPagina(elemento){
   const href = elemento.getAttribute('href');
-  console.log(href)
+  
+  //Enviar os objetos do obj
+  request({
+    method: 'GET',
+    url: href,
+    success(response) {
+      carregaResultado(response)
+    },
+    error(errorText) {
+      console.log(errorText)
+    }
+  }) 
+}
+
+function carregaResultado(response) {
+  const resultado = document.querySelector('.resultado');
+  resultado.innerHTML = response;  
 }
