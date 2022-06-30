@@ -6,7 +6,6 @@ axios('pessoas.json')
 
 function carregaElementosNaPagina(json) {
     const table = document.createElement('table');
-    
     for(let pessoa of json) {
         const tr = document.createElement('tr');
 
