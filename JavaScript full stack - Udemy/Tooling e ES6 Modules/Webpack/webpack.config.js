@@ -8,14 +8,14 @@ module.exports = {
     mode: 'development', //gera mais rápido
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, 'public', 'assets', 'js'),
-        filename: 'budle.js'
+        path: path.resolve(__dirname, 'public', 'assets', 'js'), //Caminho de onde vai gerar o budle.
+        filename: 'budle.js' //Nome do arquivo compilado.
     }, 
     module: {
         rules: [{
-            excluse: /node_modules/,
-            test: /\.js$/,
-            use: {
+            excluse: /node_modules/, //Não analisar este arquivo.
+            test: /\.js$/, //Vai testar todos arquivos que termina em .js para formar o budle.
+            use: { //Oque vai usar 
                 loader: 'babel-loader',
                 option: {
                     presets: ['@babel/env']
