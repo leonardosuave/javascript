@@ -5,7 +5,7 @@ const path = require('path'); //CommonJS é o sistema de módulo utilizado pelo 
 
 //Para exportar as coisas deste arquivo (módulo) para ser utilizado em outros arquivos (módulos) 
 module.exports = {
-    mode: 'development', //gera mais rápido
+    mode: 'development', // 'prodution'gera mais rápido (compila em menos linhas de código).
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'public', 'assets', 'js'), //Caminho de onde vai gerar o budle.
@@ -13,11 +13,11 @@ module.exports = {
     }, 
     module: {
         rules: [{
-            excluse: /node_modules/, //Não analisar este arquivo.
+            exclude: /node_modules/, //Não analisar este arquivo.
             test: /\.js$/, //Vai testar todos arquivos que termina em .js para formar o budle.
             use: { //Oque vai usar 
                 loader: 'babel-loader',
-                option: {
+                options: {
                     presets: ['@babel/env']
                 }
             },
