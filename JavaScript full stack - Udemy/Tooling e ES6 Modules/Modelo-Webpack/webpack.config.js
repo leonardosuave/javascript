@@ -6,7 +6,7 @@ const path = require('path'); //CommonJS é o sistema de módulo utilizado pelo 
 //Para exportar as coisas deste arquivo (módulo) para ser utilizado em outros arquivos (módulos) 
 module.exports = {
     mode: 'development', // 'prodution'gera mais rápido (compila em menos linhas de código).
-    entry: './src/index.js',
+    entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, 'public', 'assets', 'js'), //Caminho de onde vai gerar o budle.
         filename: 'budle.js' //Nome do arquivo compilado.
@@ -22,6 +22,9 @@ module.exports = {
                 }
             },
 
+        }, {//Objeto com regra para CSS.
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']            
         }]
     },
     devtool: 'source-map' //Mapeia o erro apresentado no arquivo bundle e aponta em qual arquivo fragmentado está localizado a linha do erro.
