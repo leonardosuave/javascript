@@ -23,37 +23,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 var CheckCPF = /*#__PURE__*/function () {
   function CheckCPF() {
+    var _this = this;
+
     _classCallCheck(this, CheckCPF);
 
     this.check = document.querySelector('.container');
-    this.eventos();
+    this.check.addEventListener('click', function (e) {
+      e.preventDefault();
+      var elemento = e.target;
+
+      if (elemento.classList.contains('clicado')) {
+        _this.checkCPFValido();
+      }
+    });
   }
 
   _createClass(CheckCPF, [{
-    key: "eventos",
-    value: function eventos() {
-      var _this = this;
-
-      document.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        _this.checkCPFValido();
-      });
-    }
-  }, {
     key: "checkCPFValido",
     value: function checkCPFValido() {
       var CampoCPF = this.check.querySelector('.cpf');
-      if (!CampoCPF.value) return 'Validar CPF em branco!';
-      if (!this.checkValidadeCPF(CampoCPF)) return 'CPF inválido';
-      return 'CPF válido!';
-    }
-  }, {
-    key: "checkValidadeCPF",
-    value: function checkValidadeCPF(CampoCPF) {
       var cpf = new _ValidaCPF__WEBPACK_IMPORTED_MODULE_0__["default"](CampoCPF.value);
-      if (!cpf.valida()) return false;
-      return true;
+      if (!cpf.valida()) return 'CPF inválido!';
+      return 'CPF válido!';
     }
   }]);
 
