@@ -11,9 +11,9 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Pessoa": () => (/* binding */ Pessoa),
+/* harmony export */   "default": () => (/* binding */ soma),
 /* harmony export */   "idade": () => (/* binding */ idade),
 /* harmony export */   "nome": () => (/* binding */ nome),
-/* harmony export */   "nomeCompleto": () => (/* binding */ nomeCompleto),
 /* harmony export */   "sobrenomeExport": () => (/* binding */ sobrenome),
 /* harmony export */   "soma": () => (/* binding */ soma)
 /* harmony export */ });
@@ -27,11 +27,9 @@ var nome = 'Luiz';
 var sobrenome = 'Miranda';
 var idade = 30;
 var nomeCompleto = "".concat(nome, " ").concat(sobrenome);
-
 function soma(x, y) {
   return x + y;
 }
-
 ;
 var Pessoa = /*#__PURE__*/_createClass(function Pessoa(nome, sobrenome) {
   _classCallCheck(this, Pessoa);
@@ -109,14 +107,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modulo1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modulo1 */ "./src/modulo1.js");
 //Importa tudo do arquivo modulo1 que possui export na frente.
 
-console.log(_modulo1__WEBPACK_IMPORTED_MODULE_0__);
+/*import * as MeuModulo from './modulo1';
+console.log(MeuModulo)*/
+
+var p1 = new _modulo1__WEBPACK_IMPORTED_MODULE_0__.Pessoa('Tassiane', 'Pinheiro');
+console.log(_modulo1__WEBPACK_IMPORTED_MODULE_0__.nome, _modulo1__WEBPACK_IMPORTED_MODULE_0__.sobrenomeExport, _modulo1__WEBPACK_IMPORTED_MODULE_0__.idade, (0,_modulo1__WEBPACK_IMPORTED_MODULE_0__["default"])(5, 3));
+console.log(p1);
 /*
 import {nome as nomeImport, sobrenomeExport, idade, nomeCompleto, soma, Pessoa} from './modulo1'
 console.log(nomeImport)
-console.log(soma(5, 6))
-
-const p1 = new Pessoa('Tassiane', 'Pinheiro')
-console.log(p1);*/
+console.log(soma(5, 6))*/
 })();
 
 /******/ })()

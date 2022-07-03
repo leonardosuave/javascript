@@ -4,7 +4,7 @@ const idade = 30;
 
 const nomeCompleto = `${nome} ${sobrenome}`
 
-function soma(x, y) {
+export /*default*/ function soma(x, y) {
     return x + y
 };
 
@@ -15,4 +15,4 @@ export class Pessoa {
     }
 }
 
-export {nome, sobrenome as sobrenomeExport, idade, nomeCompleto, soma}
+export {nome, sobrenome as sobrenomeExport, idade, soma as default}
