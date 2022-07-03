@@ -147,7 +147,6 @@ var ValidaCPF = /*#__PURE__*/function () {
 }();
 
 
-console.log('Cheguei aqui');
 
 /***/ }),
 

@@ -44,4 +44,3 @@ export default class ValidaCPF {
   }
 }
 
-console.log('Cheguei aqui')
