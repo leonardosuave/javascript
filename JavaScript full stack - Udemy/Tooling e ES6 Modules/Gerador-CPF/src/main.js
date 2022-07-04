@@ -11,6 +11,5 @@ import './assets/css/style.css';
     cpfGerado.innerHTML = gera.geraNovoCpf()
     const checkCPF = new CheckCPF()
     const cpfcheck = document.querySelector('.resultado2')
-    cpfcheck.innerHTML = ' '
     cpfcheck.innerHTML = checkCPF.checkCPFValido()
 })();

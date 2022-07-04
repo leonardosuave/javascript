@@ -34,13 +34,17 @@ export default class ValidaCPF {
   }
 
   valida() {
-    if(!this.cpfLimpo) return false;
-    if(typeof this.cpfLimpo !== 'string') return false;
-    if(this.cpfLimpo.length !== 11) return false;
-    if(this.éSequência()) return false;
+    if(!this.cpfLimpo) return 'Insira um número de CPF';
+    if(typeof this.cpfLimpo !== 'string') return 'Insira um número de CPF';
+    if(this.cpfLimpo.length !== 11) return 'Insira um número de CPF';
+    if(this.éSequência()) return 'CPF inválido';
     this.geraNovoCpf();
-
-    return this.novoCPF === this.cpfLimpo;
+    if(this.novoCPF === this.cpfLimpo) {
+      return 'CPF válido'
+    } else {
+      return 'CPF inválido'
+    }
+    
   }
 }
 

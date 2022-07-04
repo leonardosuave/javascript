@@ -28,13 +28,10 @@ var CheckCPF = /*#__PURE__*/function () {
     _classCallCheck(this, CheckCPF);
 
     this.check = document.querySelector('.container');
-    this.check.addEventListener('click', function (e) {
+    this.check.addEventListener('submit', function (e) {
       e.preventDefault();
-      var elemento = e.target;
 
-      if (elemento.classList.contains('clicado')) {
-        _this.checkCPFValido();
-      }
+      _this.checkCPFValido();
     });
   }
 
@@ -43,8 +40,7 @@ var CheckCPF = /*#__PURE__*/function () {
     value: function checkCPFValido() {
       var CampoCPF = this.check.querySelector('.cpf');
       var cpf = new _ValidaCPF__WEBPACK_IMPORTED_MODULE_0__["default"](CampoCPF.value);
-      if (!cpf.valida()) return 'CPF inválido!';
-      return 'CPF válido!';
+      return cpf.valida();
     }
   }]);
 
@@ -163,12 +159,17 @@ var ValidaCPF = /*#__PURE__*/function () {
   }, {
     key: "valida",
     value: function valida() {
-      if (!this.cpfLimpo) return false;
-      if (typeof this.cpfLimpo !== 'string') return false;
-      if (this.cpfLimpo.length !== 11) return false;
-      if (this.éSequência()) return false;
+      if (!this.cpfLimpo) return 'Insira um número de CPF';
+      if (typeof this.cpfLimpo !== 'string') return 'Insira um número de CPF';
+      if (this.cpfLimpo.length !== 11) return 'Insira um número de CPF';
+      if (this.éSequência()) return 'CPF inválido';
       this.geraNovoCpf();
-      return this.novoCPF === this.cpfLimpo;
+
+      if (this.novoCPF === this.cpfLimpo) {
+        return 'CPF válido';
+      } else {
+        return 'CPF inválido';
+      }
     }
   }], [{
     key: "geraDigito",
@@ -825,7 +826,6 @@ __webpack_require__.r(__webpack_exports__);
   cpfGerado.innerHTML = gera.geraNovoCpf();
   var checkCPF = new _modules_CheckCPF__WEBPACK_IMPORTED_MODULE_1__["default"]();
   var cpfcheck = document.querySelector('.resultado2');
-  cpfcheck.innerHTML = ' ';
   cpfcheck.innerHTML = checkCPF.checkCPFValido();
 })();
 })();
