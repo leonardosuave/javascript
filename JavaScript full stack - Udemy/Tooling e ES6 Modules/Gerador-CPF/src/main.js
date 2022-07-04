@@ -1,5 +1,5 @@
 import GeraCPF from './modules/GeraCPF'
-import CheckCPF from './modules/CheckCPF';
+//import CheckCPF from './modules/CheckCPF';
 
 import './assets/css/style.css';
 
@@ -9,7 +9,7 @@ import './assets/css/style.css';
     const gera = new GeraCPF();
     const cpfGerado = document.querySelector('.resultado');
     cpfGerado.innerHTML = gera.geraNovoCpf()
-    const checkCPF = new CheckCPF()
-    const cpfcheck = document.querySelector('.resultado2')
-    cpfcheck.innerHTML = checkCPF.checkCPFValido()
+    //const checkCPF = new CheckCPF()
+    //const cpfcheck = document.querySelector('.resultado2')
+    //cpfcheck.innerHTML = checkCPF.checkCPFValido()
 })();
