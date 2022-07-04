@@ -9,6 +9,8 @@ module.exports.sobrenome = sobrenome;
 module.exports.falaNome = falaNome;
 this.qualquerCoisa = 'O que quiser exportar.'
 
+//module.export = {nome, sobrenome, falaNome} -> Para exportar varios dados de uma unica vez 
+
 //exports.nome = nome -> exports = modules.exports
 
 class Pessoa {
