@@ -28,7 +28,7 @@ async function walk(files, rootDir) {
             continue; //Faz com que volte para o laço do For e não encerre tudo (Recursão Mutua).
         }
         
-        console.log(file) //Mostra todos os nomes de arquivos. -> fileFullPath mostraria todos os caminhos até o arquivo.
+        console.log(file) //Mostra todos os nomes de arquivos a partir do endereço JavaScript full stack Udemy. -> fileFullPath mostraria todos os caminhos até o arquivo.
     }
 }
 readdir('C:/Users/Leonardo Suave/Documents/Estudos/javascript/javascript/JavaScript full stack - Udemy')
