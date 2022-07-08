@@ -5,6 +5,7 @@ module.exports = function(x, y) {
     return x * y
 }
 
+//Sobrepões o export acima.
 module.exports = class Cachorro {
     constructor(nome) {
         Object.defineProperty(this, 'nome', {
