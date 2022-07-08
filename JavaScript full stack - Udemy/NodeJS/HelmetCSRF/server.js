@@ -22,10 +22,10 @@ const routes = require('./routes')
 const path = require('path')
 const helmet = require('helmet')
 const csrf = require('csurf')
-const { middlewareGlobal, checkCSRFerror } = require('./src/middlewares/middleware'); //require por atribuição via desestruturação, ja que middlewareGlobal é um objeto do exports.
+const { middlewareGlobal, checkCSRFerror, csrfMiddleware } = require('./src/middlewares/middleware'); //require por atribuição via desestruturação, ja que middlewareGlobal é um objeto do exports.
 
 
-app.use(helmet)
+app.use(helmet())
 //Tratamento req.body
 app.use(express.urlencoded({ extended:true }));
 
@@ -54,6 +54,7 @@ app.set('view engine', 'ejs')
 app.use(csrf())
 app.use(middlewareGlobal)//Toda rota passa no middleware.
 app.use(checkCSRFerror)//Todas as rotas checa o CSRF
+app.use(csrfMiddleware)
 app.use(routes);//Para o express utilizar as rotas
 
 

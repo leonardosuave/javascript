@@ -2,8 +2,12 @@
 
 <body>
     <section class="container"> 
-        <h1>Lorem ipsum, dolor sit amet consectetur.</h1>
+        <h1>
+            <%= umaVariavelLocal %>
+        </h1>
+        
         <form action="/" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <label>Cliente</label>
             <input type="text" name="cliente">
             <button>Submit</button>
