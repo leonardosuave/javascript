@@ -13,7 +13,7 @@ mongoose.connect(process.env.CONNECTIONSTRING)
     .catch(e => console.log(e));
 
 const session = require('express-session')//Assim so salva na memoria
-const MongoStore = require('connect-mongo')(session); //Agora salva session no banco de dados.
+const MongoStore = require('connect-mongo'); //Agora salva session no banco de dados.
 const flashMessages = require('connect-flash')
 
 //Importa routes.js
@@ -29,14 +29,16 @@ app.use(express.urlencoded({ extended:true }));
 //Caminho do conteúdo estático
 app.use(express.static(path.resolve(__dirname, 'public')))
 
+
+
 //Configuração da session
 const sessionOptions = session({
-    secret: 'iiiewrrrere',
-    store: new MongoStore({ mongoosConnection: mongoose.connection }),
+    secret: 'ninguem vai saber o que é',
+    store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING}),
     resave: false,
     saveUninitialized: false,
     cookie: { //Tempo de duração da session
-        maxAge: 1000 * 60 * 60 * 7, //Para 7 dias
+        maxAge: 1000 * 60 * 60 * 24 * 7, //Para 7 dias
         httpOnly: true
     }
 });
