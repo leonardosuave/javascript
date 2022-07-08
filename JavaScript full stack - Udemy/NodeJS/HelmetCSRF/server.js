@@ -1,38 +1,35 @@
-require('dotenv').config();
+require('dotenv').config(); //Var de ambinete.
 
 //Para improtar o express para o projeto.
 const express = require('express');
 const app = express();
-const mongoose =require('mongoose');
 
+//Conexão e modelagem da base de dados.
+const mongoose =require('mongoose');
 mongoose.connect(process.env.CONNECTIONSTRING)
     .then(() => {
-        console.log('Conectei a base de dados!') //msg quando conectado.
+        console.log('Conectei a base de dados!')
         app.emit('pronto');//sinal emitido quando conectado.           
     })
     .catch(e => console.log(e));
 
-const session = require('express-session')//Assim so salva na memoria
-const MongoStore = require('connect-mongo'); //Agora salva session no banco de dados.
-const flashMessages = require('connect-flash')
-
-//Importa routes.js
-const routes = require('./routes') 
-
-const path = require('path')
-const helmet = require('helmet')
-const csrf = require('csurf')
+const session = require('express-session');//Verificação por cookie.
+const MongoStore = require('connect-mongo');//Session salva no banco de dados.
+const flashMessages = require('connect-flash');//msg auto destrutiva.(funciona apenas com session)
+const routes = require('./routes');//Importa routes.js
+const path = require('path');//Caminhos
+const helmet = require('helmet');//Recomendado pelo Express (segurança)
+const csrf = require('csurf');//csrfTokens (segurança)
 const { middlewareGlobal, checkCSRFerror, csrfMiddleware } = require('./src/middlewares/middleware'); //require por atribuição via desestruturação, ja que middlewareGlobal é um objeto do exports.
 
 
-app.use(helmet())
+app.use(helmet());
 //Tratamento req.body
-app.use(express.urlencoded({ extended:true }));
+app.use(express.urlencoded({ extended:true }));//Postar forms dentro da aplicação
+app.use(express.json());//Inserir Json dentro da aplicação
 
 //Caminho do conteúdo estático
-app.use(express.static(path.resolve(__dirname, 'public')))
-
-
+app.use(express.static(path.resolve(__dirname, 'public')));//Acesso diretamente
 
 //Configuração da session
 const sessionOptions = session({
@@ -48,13 +45,14 @@ const sessionOptions = session({
 app.use(sessionOptions); //Para express executar session
 app.use(flashMessages());//Para express executar flash
 
-//caminho e view engine 
-app.set('views', path.resolve(__dirname, 'src', 'views'))
-app.set('view engine', 'ejs')
-app.use(csrf())
-app.use(middlewareGlobal)//Toda rota passa no middleware.
-app.use(checkCSRFerror)//Todas as rotas checa o CSRF
-app.use(csrfMiddleware)
+//caminho e view engine (arquivos que renderizam na tela)
+app.set('views', path.resolve(__dirname, 'src', 'views'));
+app.set('view engine', 'ejs');
+
+app.use(csrf());
+app.use(middlewareGlobal);//Toda rota passa no middleware.
+app.use(checkCSRFerror);//Todas as rotas checa o CSRF
+app.use(csrfMiddleware);
 app.use(routes);//Para o express utilizar as rotas
 
 
@@ -65,5 +63,4 @@ app.on('pronto', () => { //quando receber o sinal faz a escuta no servidor
         console.log()
         console.log('Servidor executando na porta 3000')
     });
-})
-//Escuta na porta 3000
+});
