@@ -2,7 +2,9 @@
 const express = require('express');
 const app = express();
 const path = require('path')
-const { middlewareGlobal } = require('./src/middlewares/middleware') //require por atribuição via desestruturação, ja que middlewareGlobal é um objeto do exports.
+ //require por atribuição via desestruturação, ja que middlewareGlobal é um objeto do exports.
+
+ //const { middlewareGlobal } = require('./src/middlewares/middleware')
 
 //Importa routes.js
 const routes = require('./routes') 
@@ -17,7 +19,7 @@ app.use(express.static(path.resolve(__dirname, 'public')))
 app.set('views', path.resolve(__dirname, 'src', 'views'))
 app.set('view engine', 'ejs')
 
-app.use(middlewareGlobal)//Toda rota passa no middleware
+//app.use(middlewareGlobal)//Toda rota passa no middleware
 app.use(routes);//Para o express utilizar as rotas
 
 

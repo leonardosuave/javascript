@@ -1,5 +1,6 @@
 //Exporta como objeto.
 exports.middlewareGlobal = (req, res, next) => {
+    console.log('AGORA FOI NO MIDD E SEGUIU O FLUXO')
     next()
 };
 
