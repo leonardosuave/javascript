@@ -4,7 +4,7 @@ exports.middlewareGlobal = (req, res, next) => {
     next()
 };
 
-//Se tiver erro para aqui. Não chama o proximo Middleware
+//Se tiver erro para aqui. Não chama o proximo Middleware(Sempre com 4 argumentos)
 exports.checkCSRFerror = (err, req, res, next) =>{
     if(err && err.code === 'EBADCSRFTOKEN') {
         return res.render('404')//Abrir a pagina 404
