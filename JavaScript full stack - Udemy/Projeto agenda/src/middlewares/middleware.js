@@ -6,7 +6,7 @@ exports.middlewareGlobal = (req, res, next) => {
 
 //Se tiver erro para aqui. Não chama o proximo Middleware(Sempre com 4 argumentos)
 exports.checkCSRFerror = (err, req, res, next) =>{
-    if(err && err.code === 'EBADCSRFTOKEN') {
+    if(err) {//err significa se conter qualquer tipo de erro.
         return res.render('404')//Abrir a pagina 404
         
         //return res.send('ERRO 404') Para escrever essa msg

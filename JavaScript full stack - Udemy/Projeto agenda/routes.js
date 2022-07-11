@@ -3,12 +3,14 @@ const route = express.Router();
 
 //Importa os controller das rotas
 const homeController = require('./src/controllers/homeController');
-const contatoController = require('./src/controllers/contatoController');
+const loginController = require('./src/controllers/loginController');
 
 //Routes criadas.
-route.get('/', homeController.paginaInicial);
-route.post('/', homeController.trataPost);
-route.get('/contato', contatoController.paginaInicial);
+route.get('/', homeController.index);
+
+//Rotas de login
+route.get('/login/index', loginController.index)
+
 
 //Exportar as route para o server.js.
 module.exports = route;
