@@ -5,6 +5,8 @@ const bcryptjs= require('bcryptjs')
 //Criação do esquema.
 const LoginSchema = new mongoose.Schema({ //Objeto com configuração dos dados do objeto.
     email: {type: String, require:true},
+    nome: {type: String, require:true},
+    sobrenome: {type: String, require:true},
     password: {type: String, require:true},
 })
 
@@ -20,7 +22,7 @@ class Login { //Para receber o req.body enviado no cadastro
 
     //Para logar usuário
     async login() {
-        this.valida();
+        this.validaLogin();//Necessário outro método valida() para checar apenas email e senha (não checa nome e sobrenome)
         if(this.errors.length > 0) return; 
 
         //Vai procurar o usuário
@@ -74,6 +76,25 @@ class Login { //Para receber o req.body enviado no cadastro
         //O e-mail precisa ser válido
         if(!validator.isEmail(this.body.email)) this.errors.push('E-mail inválido');
 
+        //O nome e sebrenome precisam ter no min 3 letras.
+
+        if(!this.body.nome) this.errors.push('Nome não pode estar em branco.');
+        if(!this.body.sobrenome) this.errors.push('Sobrenome não pode estar em branco.');
+        
+        if(this.body.nome.length < 3) this.errors.push('Nome deve ter acima de 3 letras.')
+        if(this.body.sobrenome.length < 3) this.errors.push('Sobrenome deve ter acima de 3 letras.')
+
+        //A senha precisa ter entre 5 e 12 caracteres.
+        if(this.body.password.length < 5 || this.body.password.length > 12) this.errors.push('Senha inválida. A senha precisa ter entre 5 e 12 caracteres.');
+    }
+
+    validaLogin() {
+        this.cleanUp();
+        //Validação
+
+        //O e-mail precisa ser válido
+        if(!validator.isEmail(this.body.email)) this.errors.push('E-mail inválido');
+
         //A senha precisa ter entre 5 e 12 caracteres.
         if(this.body.password.length < 5 || this.body.password.length > 12) this.errors.push('Senha inválida. A senha precisa ter entre 5 e 12 caracteres.');
     }
@@ -89,6 +110,8 @@ class Login { //Para receber o req.body enviado no cadastro
         //Para garantir que so tenha email e senha neste campo e não o csrfToken.
         this.body = {
             email: this.body.email,
+            nome: this.body.nome,
+            sobrenome: this.body.sobrenome,
             password: this.body.password
         }
         
