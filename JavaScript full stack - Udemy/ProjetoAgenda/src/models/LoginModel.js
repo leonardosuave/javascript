@@ -4,7 +4,7 @@ const validator = require('validator')
 //Criação do esquema.
 const LoginSchema = new mongoose.Schema({ //Objeto com configuração dos dados do objeto.
     email: {type: String, require:true},
-    senha: {type: String, require:true},
+    password: {type: String, require:true},
 })
 
 //Criação do Model
@@ -17,18 +17,32 @@ class Login { //Para receber o req.body enviado no cadastro
         this.user = null
     }
 
-    register() {
+    //Operações de base de dados retornam promises.
+    async register() {
         this.valida();//Método que valida os campos
-        if(this.errors.length > 0) return;
+
+        //Se o array errors for maior que 0, então possui erros de cadastro.
+        if(this.errors.length > 0) return; 
+
+        try {
+        //Para acessar o registro do usuário caso esteja correto.
+        //this.body ja esta limpo(só com email e senha)
+        this.user = await LoginModel.create(this.body)
+        } catch(e) {
+            console.log(e);
+        }
+        
     }
 
     valida() {
         this.cleanUp();
         //Validação
+
         //O e-mail precisa ser válido
-        if(!validator.isEmail(this.body.email)) this.errors.push('E-mail inválido')
+        if(!validator.isEmail(this.body.email)) this.errors.push('E-mail inválido');
+
         //A senha precisa ter entre 5 e 12 caracteres.
-        if(this.body.password.lentgh < 5 || this.body.password.lentgh > 12) this.errors.push('Senha inválida. A senha precisa ter entre 5 e 12 caracteres.')
+        if(this.body.password.length < 5 || this.body.password.length > 12) this.errors.push('Senha inválida. A senha precisa ter entre 5 e 12 caracteres.');
     }
 
     //Verificar se tudo no body é STRING
@@ -48,4 +62,4 @@ class Login { //Para receber o req.body enviado no cadastro
     }
 }
 
-module.exports = Login
+module.exports = Login;
