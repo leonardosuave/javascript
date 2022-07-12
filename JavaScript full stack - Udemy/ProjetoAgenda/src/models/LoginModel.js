@@ -18,6 +18,25 @@ class Login { //Para receber o req.body enviado no cadastro
         this.user = null
     }
 
+    //Para logar usuário
+    async login() {
+        this.valida();
+        if(this.errors.length > 0) return; 
+
+        //Vai procurar o usuário
+        this.user = await LoginModel.findOne({ email: this.body.email });
+        if(!this.user) {
+            this.errors.push('Usuário não existe.')
+            return; //Caso exista, não executa o cod abaixo.
+        }
+
+        if(!bcryptjs.compareSync(this.body.password, this.user.password)) {
+            this.errors.push('Senha inválida.')
+            this.user = null //Garante que o usuário seja null caso não o encontre para logar.
+            return;
+        }
+    }
+
     //Operações de base de dados retornam promises.
     async register() {
         this.valida();//Método que valida os campos
@@ -34,14 +53,9 @@ class Login { //Para receber o req.body enviado no cadastro
         const salt = bcryptjs.genSaltSync();
         this.body.password = bcryptjs.hashSync(this.body.password, salt) //Faz um hash com o valor da senha e o salt -> Vai criptografar
 
-        try {
-            //Para registrar o usuário caso esteja correto.
-            //this.body ja esta limpo(só com email e senha)
-            this.user = await LoginModel.create(this.body)
-        } catch(e) {
-            console.log(e);
-        }
-        
+        //Para registrar o usuário caso esteja correto.
+        //this.body ja esta limpo(só com email e senha)
+        this.user = await LoginModel.create(this.body)
     }
 
     //Vai me retornar promise, ja que é relacionado ao banco de dados.
