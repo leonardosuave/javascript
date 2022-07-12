@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator')
+const bcryptjs= require('bcryptjs')
 
 //Criação do esquema.
 const LoginSchema = new mongoose.Schema({ //Objeto com configuração dos dados do objeto.
@@ -24,14 +25,32 @@ class Login { //Para receber o req.body enviado no cadastro
         //Se o array errors for maior que 0, então possui erros de cadastro.
         if(this.errors.length > 0) return; 
 
+        await this.userExists();
+
+        //Para checar novamente se teve erro de usuário existente.
+        if(this.errors.length > 0) return; 
+
+
+        const salt = bcryptjs.genSaltSync();
+        this.body.password = bcryptjs.hashSync(this.body.password, salt) //Faz um hash com o valor da senha e o salt -> Vai criptografar
+
         try {
-        //Para acessar o registro do usuário caso esteja correto.
-        //this.body ja esta limpo(só com email e senha)
-        this.user = await LoginModel.create(this.body)
+            //Para registrar o usuário caso esteja correto.
+            //this.body ja esta limpo(só com email e senha)
+            this.user = await LoginModel.create(this.body)
         } catch(e) {
             console.log(e);
         }
         
+    }
+
+    //Vai me retornar promise, ja que é relacionado ao banco de dados.
+    async userExists() {
+
+        //Vai encontrar um registro da base de dados que tenha o email igual a this.body.email (retorna o usuário ou null)
+        const user = await LoginModel.findOne({ email: this.body.email })
+
+        if(user) this.errors.push('Usuário já existe.')
     }
 
     valida() {
