@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const validator = require('validator')
+const validator = require('validator')//Validar email.
 const bcryptjs= require('bcryptjs')
 
 //Criação do esquema.
@@ -30,7 +30,7 @@ class Login { //Para receber o req.body enviado no cadastro
         //Para checar novamente se teve erro de usuário existente.
         if(this.errors.length > 0) return; 
 
-
+        //Tratamento da senha para o banco de dados.
         const salt = bcryptjs.genSaltSync();
         this.body.password = bcryptjs.hashSync(this.body.password, salt) //Faz um hash com o valor da senha e o salt -> Vai criptografar
 
@@ -50,7 +50,7 @@ class Login { //Para receber o req.body enviado no cadastro
         //Vai encontrar um registro da base de dados que tenha o email igual a this.body.email (retorna o usuário ou null)
         const user = await LoginModel.findOne({ email: this.body.email })
 
-        if(user) this.errors.push('Usuário já existe.')
+        if(user) this.errors.push('Usuário já existe.')//Se retornar um email.
     }
 
     valida() {
