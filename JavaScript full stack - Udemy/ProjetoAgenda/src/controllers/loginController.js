@@ -18,8 +18,8 @@ exports.register = async function(req, res) {
             req.flash('errors', login.errors);//Envia os erros em flash
             req.session.save(function() { //Para salvar a seção e retornar com callback a pagina de login 
                 return res.redirect('/login/index');//Redireciona para a pagina anterior(login).
-        });
-        return;
+            });
+            return;
         }
 
         //Para mostrar msg de success se tudo estiver correto.
