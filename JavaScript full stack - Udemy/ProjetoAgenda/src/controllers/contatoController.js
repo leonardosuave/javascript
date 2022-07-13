@@ -12,7 +12,7 @@ exports.register = async (req, res) => {
         if(contato.errors.length > 0) {
             req.flash('errors', contato.errors);//Envia os erros em flash
             req.session.save(function() { //Para salvar a seção e retornar com callback a pagina de login 
-                return res.redirect('/contato/index'); //Vai redirecionar para a edição do contato cadastrado.
+                return res.redirect('/contato/index'); //Vai redirecionar para a pagina de cadastro de contato.
                 
             }) 
             return;   
@@ -32,8 +32,9 @@ exports.register = async (req, res) => {
 }
 
 exports.editIndex = async(req, res) => {
-    if(!req.params.id) return res.render('404');
+    if(!req.params.id) return res.render('404'); //Caso não receba o id do contato cadastrado
 
+    //Aqui não precisa instânciar, pode atribuir await Contato.buscaPorId direto , ja que é uma constructor function e não class
     const contato = await Contato.buscaPorId(req.params.id) 
     if(!contato) return res.render('404');
 

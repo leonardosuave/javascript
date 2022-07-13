@@ -11,10 +11,11 @@ const ContatoSchema = new mongoose.Schema({ //Objeto com configuração dos dado
 })
 
 //Para buscar o contato por ID
+//Função estática
 Contato.buscaPorId = async (id) => {
     if(typeof id !== 'string') return;
-   const user = await ContatoModel.findById(id) //Retorna o user ou null
-   return user;
+    const user = await ContatoModel.findById(id) //Retorna o user ou null
+    return user;
 }
 
 //Criação do Model
