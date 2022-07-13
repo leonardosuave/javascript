@@ -51,7 +51,7 @@ exports.login = async function(req, res) {
 
         //Para mostrar msg de success se tudo estiver correto.
         req.flash('success', 'Login realizado com sucesso.');
-        req.session.user = login.user;//Vai identificar o navegador para login (joga o usuário dentro da session)
+        req.session.user = login.user;//Cadastra o user na session (Quando efetua o login o user é cadastrado na session)
         req.session.save(function() { 
             return res.redirect('/login/index');
         });
@@ -64,5 +64,5 @@ exports.login = async function(req, res) {
 //Para deslogar o usuário
 exports.logout = (req, res) => {
     req.session.destroy(); //Vai destruir a session e sair.
-    return res.redirect('/')
+    return res.redirect('/login/index')
 }

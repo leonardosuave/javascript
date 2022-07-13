@@ -13,6 +13,8 @@ exports.checkCSRFerror = (err, req, res, next) =>{
         
         //return res.send('ERRO 404') Para escrever essa msg
     }
+
+    next()
 };
 
 //Para criar um csrfToken em todas as páginas e poder criar formúlarios  
@@ -20,6 +22,21 @@ exports.csrfMiddleware = (req, res, next) => {
     res.locals.csrfToken = req.csrfToken(),
     next()
 }
+
+//Para checar se existe o user cadastrado na session (logado)
+exports.loginRequired = (req, res, next) => {
+    console.log(req.session.user)
+    
+    if(!req.session.user) {
+        req.flash('errors', 'Você precisa fazer login.');
+        req.session.save(function() {
+            return res.redirect('/');
+            
+        });
+    }
+
+    next(); //Passa para o proximo middleware se estiver logado
+};
 
 //Posso passar mais de um middleware aqui por exports.xxx
 //Em server.js fazer require por associação via desestruturação tudo na mesma chave do exemplo, e depois atribuir o uso do express separadamente para cada middle desestruturado.
