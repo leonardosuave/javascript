@@ -13,7 +13,7 @@ exports.register = async (req, res) => {
             req.flash('errors', contato.errors);//Envia os erros em flash
             req.session.save(function() { //Para salvar a seção e retornar com callback a pagina de login 
                 return res.redirect('/contato/index'); //Vai redirecionar para a edição do contato cadastrado.
-                //contato.contato equivale ao this.contato que recebeu o registro
+                
             }) 
             return;   
         }
