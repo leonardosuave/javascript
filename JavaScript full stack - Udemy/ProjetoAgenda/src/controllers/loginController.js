@@ -43,7 +43,7 @@ exports.login = async function(req, res) {
         //Para mostrar os erros na página
         if(login.errors.length > 0) {
             req.flash('errors', login.errors);//Envia os erros em flash
-            req.session.save(function() { //Para salvar a seção e retornar com callback a pagina de login 
+            req.session.save(function() { //Para salvar a seção e retornar com callback a pagina de login comn os erros.
                 return res.redirect('/login/index');//Redireciona para a pagina anterior(login).
             });
         return;

@@ -26,12 +26,14 @@ class Login { //Para receber o req.body enviado no cadastro
         if(this.errors.length > 0) return; 
 
         //Vai procurar o usuário
-        this.user = await LoginModel.findOne({ email: this.body.email });
+        this.user = await LoginModel.findOne({ email: this.body.email }); //Se não encontrar retorna null
+
         if(!this.user) {
             this.errors.push('Usuário não existe.')
-            return; //Caso exista, não executa o cod abaixo.
+            return; 
         }
 
+        //Se o usuário existir, então checa a senha. (this.user.password vem da checagem do email)
         if(!bcryptjs.compareSync(this.body.password, this.user.password)) {
             this.errors.push('Senha inválida.')
             this.user = null //Garante que o usuário seja null caso não o encontre para logar.
