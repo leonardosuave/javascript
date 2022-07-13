@@ -6,7 +6,7 @@ const homeController = require('./src/controllers/homeController');
 const loginController = require('./src/controllers/loginController');
 const contatoController = require('./src/controllers/contatoController');
 
-const { loginRequired } = require('./src/middlewares/middleware')
+let {loginRequired} = require('./src/middlewares/middleware');
 
 //Routes criadas.
 route.get('/', homeController.index);

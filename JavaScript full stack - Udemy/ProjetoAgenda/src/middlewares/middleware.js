@@ -25,18 +25,14 @@ exports.csrfMiddleware = (req, res, next) => {
 
 //Para checar se existe o user cadastrado na session (logado)
 exports.loginRequired = (req, res, next) => {
-    console.log(req.session.user)
-    
     if(!req.session.user) {
-        req.flash('errors', 'Você precisa fazer login.');
-        req.session.save(function() {
-            return res.redirect('/');
-            
-        });
+      req.flash('errors', 'Você precisa fazer login.');
+      req.session.save(() => res.redirect('/login/index'));
+      return;
     }
-
-    next(); //Passa para o proximo middleware se estiver logado
-};
+  
+    next();
+  };
 
 //Posso passar mais de um middleware aqui por exports.xxx
 //Em server.js fazer require por associação via desestruturação tudo na mesma chave do exemplo, e depois atribuir o uso do express separadamente para cada middle desestruturado.
