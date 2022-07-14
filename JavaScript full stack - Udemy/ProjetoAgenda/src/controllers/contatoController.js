@@ -41,12 +41,14 @@ exports.editIndex = async(req, res) => {
     res.render('contato', {contato});
 }
 
-exports.editContato = async(req, res) => {
+exports.editContato = async (req, res) => {
     if(!req.params.id) return res.render('404'); //Caso não receba o id do contato cadastrado.
     
     try {
         const contato = new Contato(req.body)
+        //Assim que cadastrar o contato, será direcionado a pagina de contato/edit/id do contato e será capturado novamente o req.body para nova edição
         await contato.edit(req.params.id)
+        //Envia o id referente ao contato que quer atualizar 
 
         if(contato.errors.length > 0) {
             req.flash('errors', contato.errors);//Envia os erros em flash
