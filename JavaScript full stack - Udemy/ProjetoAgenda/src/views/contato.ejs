@@ -11,7 +11,12 @@
 
       <%- include('includes/messages') %>
 
-      <form action="/contato/register" method="POST"> <!--Rota para receber os dados do formulário-->
+      <% if(contato._id) { %>
+        <form action="/contato/edit/<%= contato._id %>" method="POST"> <!--(Caso encontre o contato._id) Rota para receber os dados do contato cadastrado e redirecionar para rota de edição-->
+      <% } else { %>
+        <form action="/contato/register" method="POST"> <!--Caso o contato não exista, vai cria-lo através desta rota-->
+      <% } %>
+      
         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
         <!--Config de cadastro-->

@@ -10,14 +10,6 @@ const ContatoSchema = new mongoose.Schema({ //Objeto com configuração dos dado
     criadoEm: {type: Date, default: Date.now}, //Para registrar a hora que foi salvo.
 })
 
-//Para buscar o contato por ID
-//Função estática
-Contato.buscaPorId = async (id) => {
-    if(typeof id !== 'string') return;
-    const user = await ContatoModel.findById(id) //Retorna o user ou null
-    return user;
-}
-
 //Criação do Model
 const ContatoModel = mongoose.model('Contato', ContatoSchema);
 
@@ -64,7 +56,23 @@ Contato.prototype.cleanUp = function() {
         email: this.body.email,
         telefone: this.body.telefone
     }
+}
+
+//Para buscar o contato por ID
+//Função estática
+Contato.buscaPorId = async (id) => {
+    if(typeof id !== 'string') return;
+    const user = await ContatoModel.findById(id) //Retorna o user ou null
+    return user;
+}
+
+Contato.prototype.edit = async function(id) {
+    if(typeof id !== 'string') return;
     
+    this.valida() //Para validar novamente os dados.
+    if(this.errors.length > 0) return;
+
+    this.contato = await ContatoModel.findByIdAndUpdate(id, this.body, {new: true}) //this.body é o corpo do forms validado acima. || new:true é significa que quando atualizar o contato vai retornar os dados atualizados.
 }
 
 module.exports = Contato
