@@ -26,7 +26,7 @@ class Login { //Para receber o req.body enviado no cadastro
         if(this.errors.length > 0) return; 
 
         //Vai procurar o usuário
-        this.user = await LoginModel.findOne({ email: this.body.email }); //Se não encontrar retorna null
+        this.user = await LoginModel.findOne({ email: this.body.email }); //Caso no final a senha foi igual, então atribui este usuário do banco de dados para this.user da Class Login
 
         if(!this.user) {
             this.errors.push('Usuário não existe.')
@@ -59,16 +59,16 @@ class Login { //Para receber o req.body enviado no cadastro
 
         //Para registrar o usuário caso esteja correto.
         //this.body ja esta limpo(só com email e senha)
-        this.user = await LoginModel.create(this.body)
+        this.user = await LoginModel.create(this.body) //É criado dentro do this.user da Class Pessoa
     }
 
     //Vai me retornar promise, ja que é relacionado ao banco de dados.
     async userExists() {
 
         //Vai encontrar um registro da base de dados que tenha o email igual a this.body.email (retorna o usuário ou null)
-        const user = await LoginModel.findOne({ email: this.body.email })
+        const checkUsuario = await LoginModel.findOne({ email: this.body.email })
 
-        if(user) this.errors.push('Usuário já existe.')//Se retornar um email.
+        if(checkUsuario) this.errors.push('Usuário já existe.')//Se retornar um email.
     }
 
     valida() {

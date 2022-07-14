@@ -63,6 +63,7 @@ exports.login = async function(req, res) {
 
 //Para deslogar o usuário
 exports.logout = (req, res) => {
+    //req.session.user = null
     req.session.destroy(); //Vai destruir a session e sair.
     return res.redirect('/login/index')
 }

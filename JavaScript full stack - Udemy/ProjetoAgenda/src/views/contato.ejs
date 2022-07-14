@@ -10,11 +10,12 @@
       <p class="text-center lead">Crie ou edite seu contato abaixo.</p>
 
       <%- include('includes/messages') %>
-
+      
+      <!--Na tela de cadastro contato, terá dois caminho, um quando for redirecionado após um cadastro e outro para cadastrar do zero-->
       <% if(contato._id) { %>
-        <form action="/contato/edit/<%= contato._id %>" method="POST"> <!--(Caso encontre o contato._id) Rota para receber os dados do contato cadastrado e redirecionar para rota de edição-->
+        <form action="/contato/edit/<%= contato._id %>" method="POST"> <!--(Caso encontre o contato._id) Rota para receber os dados do contato ja cadastrado e redirecionar para rota de edição-->
       <% } else { %>
-        <form action="/contato/register" method="POST"> <!--Neste caso é direcionado quando atribuimos o contato fake {contato} sem valor, e assim pode registrar novo contato sem erro na página -->
+        <form action="/contato/register" method="POST"> <!--Neste caso é direcionado quando atribuimos o contato fake {contato} sem valor, e assim pode registrar novo contato do zero e sem erro na página -->
       <% } %>
       
         <input type="hidden" name="_csrf" value="<%= csrfToken %>">

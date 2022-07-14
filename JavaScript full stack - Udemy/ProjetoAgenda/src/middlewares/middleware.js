@@ -1,8 +1,9 @@
 exports.middlewareGlobal = (req, res, next) => {
     //Para capturar as msg de errors e success
+    //As locals ficam disponivel globalmente
     res.locals.errors = req.flash('errors')
     res.locals.success = req.flash('success')
-    res.locals.user = req.session.user //objeto com os dados cadastrados
+    res.locals.user = req.session.user //locals (user) recebe o objeto com os dados cadastrados
     next()
 };
 
