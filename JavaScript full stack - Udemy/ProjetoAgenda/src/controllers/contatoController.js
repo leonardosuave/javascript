@@ -1,7 +1,7 @@
 const Contato = require('../models/ContatoModel')
 
 exports.index = (req, res) => {
-    res.render('contato', {contato: {}});
+    res.render('contato', {contato: {}}); //{contato} é enviado porque atribuiu contato.nome... no forms de cadastro de contatos para quando quiser editar ja apareça os valores ja cadastrados nos campos
 };
 
 exports.register = async (req, res) => {
@@ -13,7 +13,6 @@ exports.register = async (req, res) => {
             req.flash('errors', contato.errors);//Envia os erros em flash
             req.session.save(function() { //Para salvar a seção e retornar com callback a pagina de login 
                 return res.redirect('/contato/index'); //Vai redirecionar para a pagina de cadastro de contato.
-                
             }) 
             return;   
         }
@@ -31,6 +30,7 @@ exports.register = async (req, res) => {
     }
 }
 
+//Para salvar os dados do contato nos campos para edição.
 exports.editIndex = async(req, res) => {
     if(!req.params.id) return res.render('404'); //Caso não receba o id do contato cadastrado
 
@@ -38,7 +38,7 @@ exports.editIndex = async(req, res) => {
     const contato = await Contato.buscaPorId(req.params.id) 
     if(!contato) return res.render('404');
 
-    res.render('contato', {contato});
+    res.render('contato', {contato}); //{contato} é utilizado para atribuir os valores ja nos campos dos cadastros que vão ser editados
 }
 
 exports.editContato = async (req, res) => {
@@ -46,9 +46,10 @@ exports.editContato = async (req, res) => {
     
     try {
         const contato = new Contato(req.body)
-        //Assim que cadastrar o contato, será direcionado a pagina de contato/edit/id do contato e será capturado novamente o req.body para nova edição
+        //Com a página recarregada com os valores do contato através do editIndex, caso tenha modificações no campo sera novamente enviado o req.body para a structor function e feito as devidas validações dos dados. 
+
         await contato.edit(req.params.id)
-        //Envia o id referente ao contato que quer atualizar 
+        //Envia o id do contato que quer atualizar para salvar com os novos dados no banco de dados. 
 
         if(contato.errors.length > 0) {
             req.flash('errors', contato.errors);//Envia os erros em flash

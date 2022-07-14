@@ -14,7 +14,7 @@
       <% if(contato._id) { %>
         <form action="/contato/edit/<%= contato._id %>" method="POST"> <!--(Caso encontre o contato._id) Rota para receber os dados do contato cadastrado e redirecionar para rota de edição-->
       <% } else { %>
-        <form action="/contato/register" method="POST"> <!--Caso o contato não exista, vai cria-lo através desta rota-->
+        <form action="/contato/register" method="POST"> <!--Neste caso é direcionado quando atribuimos o contato fake {contato} sem valor, e assim pode registrar novo contato sem erro na página -->
       <% } %>
       
         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
