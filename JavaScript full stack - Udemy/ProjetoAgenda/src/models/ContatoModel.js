@@ -59,11 +59,11 @@ Contato.prototype.cleanUp = function() {
 }
 
 //Para buscar o contato por ID
-//Função estática
+//Método estático
 Contato.buscaPorId = async (id) => {
     if(typeof id !== 'string') return;
-    const user = await ContatoModel.findById(id) //Retorna o user ou null
-    return user;
+    const contato = await ContatoModel.findById(id) //Retorna o user ou null
+    return contato;
 }
 
 Contato.prototype.edit = async function(id) {
@@ -74,5 +74,21 @@ Contato.prototype.edit = async function(id) {
 
     this.contato = await ContatoModel.findByIdAndUpdate(id, this.body, {new: true}) //this.body é o corpo do forms validado acima. || new:true é significa que quando atualizar o contato vai retornar os dados atualizados.
 }
+
+//Para buscar os contatos para a home
+//Método estático
+Contato.buscaContato = async function() {
+    const contatos = await ContatoModel.find().sort({criadoEm:-1}) //Retorna os contatos do banco de dados em ordem decrescente.
+    return contatos;
+}
+
+//Para deletar os contatos cadastrados
+//Método estático
+Contato.delete = async function(id) {
+    if(typeof id !== 'string') return;
+
+    const contato = await ContatoModel.findByIdAndDelete(id) //Apaga o contato encontrado pelo id.
+    return contato;
+};
 
 module.exports = Contato

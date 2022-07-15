@@ -1,3 +1,4 @@
+const { async } = require('regenerator-runtime');
 const Contato = require('../models/ContatoModel')
 
 exports.index = (req, res) => {
@@ -70,4 +71,18 @@ exports.editContato = async (req, res) => {
         console.log(e)
         return res.render('404')
     }
+}
+
+exports.delete = async function(req, res) {
+    if(!req.params.id) return res.render('404'); //Caso não receba o id do contato cadastrado
+
+    //Aqui não precisa instânciar, pode atribuir await Contato.buscaPorId direto , ja que é uma constructor function e não class
+    const contatoDel = await Contato.delete(req.params.id) 
+    if(!contatoDel) return res.render('404');
+
+    req.flash('success', 'Contato apagado com sucesso.')
+    req.session.save(() => {
+        return res.redirect(`/`)
+    });    
+    
 }
