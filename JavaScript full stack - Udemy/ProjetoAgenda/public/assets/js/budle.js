@@ -1,16 +1,16 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./frontend/modules/login.js":
-/*!***********************************!*\
-  !*** ./frontend/modules/login.js ***!
-  \***********************************/
+/***/ "./frontend/modules/contato.js":
+/*!*************************************!*\
+  !*** ./frontend/modules/contato.js ***!
+  \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Registrar)
+/* harmony export */   "default": () => (/* binding */ Contato)
 /* harmony export */ });
 /* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
 /* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_0__);
@@ -28,14 +28,191 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
  //Para validar email.
 
-var Registrar = /*#__PURE__*/function () {
-  function Registrar(formClass) {
-    _classCallCheck(this, Registrar);
+var Contato = /*#__PURE__*/function () {
+  function Contato(formClass) {
+    _classCallCheck(this, Contato);
+
+    this.formContato = document.querySelector(formClass);
+  }
+
+  _createClass(Contato, [{
+    key: "init",
+    value: function init() {
+      this.events();
+    }
+  }, {
+    key: "events",
+    value: function events() {
+      var _this = this;
+
+      if (!this.formContato) return;
+      this.formContato.addEventListener('submit', function (e) {
+        _this.handleSubmit(e);
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var checkNome = this.checkNomeContato();
+      var checkContato = this.checkContatoValido();
+
+      if (checkNome && checkContato) {
+        console.log('Enviado');
+        this.formContato.submit();
+      }
+    }
+  }, {
+    key: "checkContatoValido",
+    value: function checkContatoValido() {
+      var email = this.formContato.querySelector('.emailContato');
+      var telefone = this.formContato.querySelector('.telefoneContat');
+
+      if (this.validaEmail(email) || this.validaTel(telefone)) {
+        return true;
+      } else {
+        this.criaErro(email, 'Cadastre um E-mail e/ou Telefone');
+        this.criaErro(telefone, 'Cadastre um Telefone e/ou E-mail');
+      }
+
+      ;
+    }
+  }, {
+    key: "checkNomeContato",
+    value: function checkNomeContato() {
+      var valid = true; //Para retirar os erros acumulados.
+
+      var _iterator = _createForOfIteratorHelper(this.formContato.querySelectorAll('.error-text')),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var errorText = _step.value;
+          errorText.remove();
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      ;
+
+      var _iterator2 = _createForOfIteratorHelper(this.formContato.querySelectorAll('.form-contato')),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var campo = _step2.value;
+          console.log(campo); //check nome
+
+          if (campo.classList.contains('nomeContato')) {
+            if (!this.validaNome(campo)) valid = false;
+          }
+
+          ;
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+
+      ;
+      return valid;
+    }
+  }, {
+    key: "validaEmail",
+    value: function validaEmail(campo) {
+      var valid = true;
+
+      if (!validator__WEBPACK_IMPORTED_MODULE_0___default().isEmail(campo.value)) {
+        this.criaErro(campo, 'E-mail inválido!');
+        valid = false;
+      }
+
+      console.log(valid);
+      return valid;
+    }
+  }, {
+    key: "validaTel",
+    value: function validaTel(campo) {
+      var valid = true;
+
+      if (!campo.value) {
+        valid = false;
+      }
+
+      ;
+      console.log(valid);
+      return valid;
+    }
+  }, {
+    key: "validaNome",
+    value: function validaNome(campo) {
+      var valid = true;
+
+      if (campo.value.length < 3 || campo.value.length > 12) {
+        this.criaErro(campo, 'Nome inválido.');
+        valid = false;
+      }
+
+      console.log(valid);
+      return valid;
+    }
+  }, {
+    key: "criaErro",
+    value: function criaErro(campo, msg) {
+      var div = document.createElement('div');
+      div.innerHTML = msg;
+      div.classList.add('error-text');
+      campo.insertAdjacentElement('afterend', div);
+    }
+  }]);
+
+  return Contato;
+}();
+
+
+;
+
+/***/ }),
+
+/***/ "./frontend/modules/login.js":
+/*!***********************************!*\
+  !*** ./frontend/modules/login.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Login)
+/* harmony export */ });
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_0__);
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+ //Para validar email.
+
+var Login = /*#__PURE__*/function () {
+  function Login(formClass) {
+    _classCallCheck(this, Login);
 
     this.form = document.querySelector(formClass);
   }
 
-  _createClass(Registrar, [{
+  _createClass(Login, [{
     key: "init",
     value: function init() {
       this.events();
@@ -146,7 +323,7 @@ var Registrar = /*#__PURE__*/function () {
     }
   }]);
 
-  return Registrar;
+  return Login;
 }();
 
 
@@ -28379,6 +28556,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/css/style.css */ "./frontend/assets/css/style.css");
 /* harmony import */ var _modules_registrar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/registrar */ "./frontend/modules/registrar.js");
 /* harmony import */ var _modules_login__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/login */ "./frontend/modules/login.js");
+/* harmony import */ var _modules_contato__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/contato */ "./frontend/modules/contato.js");
+
 
 
 
@@ -28388,6 +28567,8 @@ var registrar = new _modules_registrar__WEBPACK_IMPORTED_MODULE_3__["default"]('
 registrar.init();
 var login = new _modules_login__WEBPACK_IMPORTED_MODULE_4__["default"]('.form-login');
 login.init();
+var contato = new _modules_contato__WEBPACK_IMPORTED_MODULE_5__["default"]('.form-contato');
+contato.init();
 })();
 
 /******/ })()

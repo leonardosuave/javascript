@@ -1,6 +1,6 @@
 import validator from "validator"; //Para validar email.
 
-export default class Registrar {
+export default class Login {
     constructor(formClass) {
         this.form = document.querySelector(formClass);
     }
