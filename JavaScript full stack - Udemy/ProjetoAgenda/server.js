@@ -18,12 +18,12 @@ const MongoStore = require('connect-mongo');//Session salva no banco de dados.
 const flashMessages = require('connect-flash');//msg auto destrutiva.(funciona apenas com session)
 const routes = require('./routes');//Importa routes.js
 const path = require('path');//Caminhos
-const helmet = require('helmet');//Recomendado pelo Express (segurança)
+//const helmet = require('helmet');//Recomendado pelo Express (segurança)
 const csrf = require('csurf');//csrfTokens (segurança)
 const { middlewareGlobal, checkCSRFerror, csrfMiddleware } = require('./src/middlewares/middleware'); //require por atribuição via desestruturação, ja que middlewareGlobal é um objeto do exports.
 
 
-app.use(helmet());
+//app.use(helmet());
 //Tratamento req.body
 app.use(express.urlencoded({ extended:true }));//Postar forms dentro da aplicação
 app.use(express.json());//Inserir Json dentro da aplicação

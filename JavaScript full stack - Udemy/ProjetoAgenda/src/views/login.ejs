@@ -1,5 +1,5 @@
-<%- include('includes/nav') %>
 <%- include('includes/head') %>
+<%- include('includes/nav') %>
 
 <div class="container">
   <div class="row">
@@ -16,26 +16,26 @@
           <h4>Faça seu cadastro</h4>
           <p>Para criar conta, preencha o formulário abaixo.</p>
 
-          <form action="/login/register" method="POST"> <!--Rota para receber os dados do formulário-->
+          <form class="form-registrar" action="/login/register" method="POST"> <!--Rota para receber os dados do formulário-->
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <!--Config de cadastro-->
             <div class="form-group"> 
               <label>Seu email</label>
-              <input type="email" class="form-control" name="email">
+              <input type="email" class="form-control emailRegister" name="email">
             </div>
             <div class="form-group"> 
               <label>Nome</label>
-              <input type="text" class="form-control" name="nome">
+              <input type="text" class="form-control nomeRegister" name="nome">
             </div>
             <div class="form-group"> 
               <label>Sobrenome</label>
-              <input type="text" class="form-control" name="sobrenome">
+              <input type="text" class="form-control sobrenomeRegister" name="sobrenome">
             </div>
             <div class="form-group">
               <label>Sua senha</label>
-              <input type="password" class="form-control" name="password">
+              <input type="password" class="form-control senhaRegister" name="password">
             </div>
-            <button type="submit" class="btn btn-primary">Criar minha conta</button>
+            <button type="submit" class="btn btn-primary btn-register">Criar minha conta</button>
           </form>
 
         </div>
@@ -44,17 +44,17 @@
           <h4>Faça seu login</h4>
           <p>Se você ja tem uma conta, faça o login abaixo.</p>
           
-          <form action="/login/login" method="POST"> <!--Rota para receber os dados do formulário-->
+          <form class="form-login" action="/login/login" method="POST"> <!--Rota para receber os dados do formulário-->
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <div class="form-group"> <!--Config de cadastro-->
               <label>Seu email</label>
-              <input type="email" class="form-control" name="email">
+              <input type="email" class="form-control emailLogin" name="email">
             </div>
             <div class="form-group">
               <label>Sua senha</label>
-              <input type="password" class="form-control" name="password">
+              <input type="password" class="form-control senhaLogin" name="password">
             </div>
-            <button type="submit" class="btn btn-primary">Entrar</button>
+            <button type="submit" class="btn btn-primary btn-login">Entrar</button>
           </form>
         </div>
 
