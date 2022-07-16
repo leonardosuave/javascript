@@ -20,7 +20,7 @@ export default class Registrar {
         e.preventDefault();
         
         const checkCamposValidos = this.checkCamposValidos();
-        console.log(checkCamposValidos)
+ 
         if(checkCamposValidos) {
             this.form.submit()
         };
@@ -39,13 +39,11 @@ export default class Registrar {
             //check email
             if(campo.classList.contains('emailLogin')) {
                 if(!this.validaEmail(campo)) valid = false
-                console.log(`email ${valid}`)
             };
 
             //check senha
             if(campo.classList.contains('senhaLogin')) {
                 if(!this.validaSenha(campo)) valid = false;
-                console.log(`senha ${valid}`)
             };
         };
 
@@ -66,7 +64,7 @@ export default class Registrar {
         let valid = true;
 
         if(campo.value.length < 5 || campo.value.length > 12) {
-            this.criaErro(campo, 'Senha deve ter entre 5 e 12 caracteres.')
+            this.criaErro(campo, 'Senha inválida!.')
             valid = false;
         }
         return valid;

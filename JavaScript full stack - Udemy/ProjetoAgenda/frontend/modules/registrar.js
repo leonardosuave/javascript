@@ -20,7 +20,7 @@ export default class Registrar {
         e.preventDefault();
         
         const checkCamposValidos = this.checkCamposValidos();
-        console.log(checkCamposValidos)
+
         if(checkCamposValidos) {
             this.form.submit()
         }
@@ -39,25 +39,21 @@ export default class Registrar {
             //check email
             if(campo.classList.contains('emailRegister')) {
                 if(!this.validaEmail(campo)) valid = false
-                console.log(`email ${valid}`)
             };
 
             //check nome
             if(campo.classList.contains('nomeRegister')) {
                 if(!this.validaNome(campo)) valid = false;
-                console.log(`nome ${valid}`)
             };
 
             //check sobrenome
             if(campo.classList.contains('sobrenomeRegister')) {
                 if(!this.validaSobrenome(campo)) valid = false;
-                console.log(`sobre ${valid}`)
             }
 
             //check senha
             if(campo.classList.contains('senhaRegister')) {
                 if(!this.validaSenha(campo)) valid = false;
-                console.log(`senha ${valid}`)
             }
         }
 

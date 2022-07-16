@@ -55,7 +55,6 @@ var Registrar = /*#__PURE__*/function () {
     value: function handleSubmit(e) {
       e.preventDefault();
       var checkCamposValidos = this.checkCamposValidos();
-      console.log(checkCamposValidos);
 
       if (checkCamposValidos) {
         this.form.submit();
@@ -94,14 +93,12 @@ var Registrar = /*#__PURE__*/function () {
           //check email
           if (campo.classList.contains('emailLogin')) {
             if (!this.validaEmail(campo)) valid = false;
-            console.log("email ".concat(valid));
           }
 
           ; //check senha
 
           if (campo.classList.contains('senhaLogin')) {
             if (!this.validaSenha(campo)) valid = false;
-            console.log("senha ".concat(valid));
           }
 
           ;
@@ -133,7 +130,7 @@ var Registrar = /*#__PURE__*/function () {
       var valid = true;
 
       if (campo.value.length < 5 || campo.value.length > 12) {
-        this.criaErro(campo, 'Senha deve ter entre 5 e 12 caracteres.');
+        this.criaErro(campo, 'Senha inválida!.');
         valid = false;
       }
 
@@ -211,7 +208,6 @@ var Registrar = /*#__PURE__*/function () {
     value: function handleSubmit(e) {
       e.preventDefault();
       var checkCamposValidos = this.checkCamposValidos();
-      console.log(checkCamposValidos);
 
       if (checkCamposValidos) {
         this.form.submit();
@@ -248,27 +244,23 @@ var Registrar = /*#__PURE__*/function () {
           //check email
           if (campo.classList.contains('emailRegister')) {
             if (!this.validaEmail(campo)) valid = false;
-            console.log("email ".concat(valid));
           }
 
           ; //check nome
 
           if (campo.classList.contains('nomeRegister')) {
             if (!this.validaNome(campo)) valid = false;
-            console.log("nome ".concat(valid));
           }
 
           ; //check sobrenome
 
           if (campo.classList.contains('sobrenomeRegister')) {
             if (!this.validaSobrenome(campo)) valid = false;
-            console.log("sobre ".concat(valid));
           } //check senha
 
 
           if (campo.classList.contains('senhaRegister')) {
             if (!this.validaSenha(campo)) valid = false;
-            console.log("senha ".concat(valid));
           }
         }
       } catch (err) {
