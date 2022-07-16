@@ -1,4 +1,3 @@
-const { async } = require('regenerator-runtime');
 const Contato = require('../models/ContatoModel')
 
 exports.index = (req, res) => {
@@ -21,7 +20,10 @@ exports.register = async (req, res) => {
         //Para contato registrado com sucesso.
         req.flash('success', 'Contato registrado!')
         req.session.save(function () {
-            return res.redirect(`/contato/index/${contato.contato._id}`)//Vai redirecionar para a edição do contato cadastrado.
+            return res.redirect(`/`) // -> Após registrar o contato é redirecionado para a tela inicial da agenda
+            
+            //res.redirect(`/contato/index/${contato.contato._id}`)
+            //Vai redirecionar para a edição do contato cadastrado.
             //contato.contato equivale ao this.contato que recebeu o registro
             //OBS: --> contato.contato retorna o this.contato com os campos ja tratados(nome,sobr,email,tel,data e id do banco de dados.)
         })
@@ -63,7 +65,10 @@ exports.editContato = async (req, res) => {
         //Para contato editado com sucesso.
         req.flash('success', 'Contato editado com sucesso!')
         req.session.save(function () {
-            return res.redirect(`/contato/index/${contato.contato._id}`)//Vai redirecionar para a edição do contato cadastrado.
+            return res.redirect(`/`)// ->Redireciona para a tela inicial da agenda.
+
+            //res.redirect(`/contato/index/${contato.contato._id}`)  
+            //Vai redirecionar para a edição do contato cadastrado.
             //contato.contato equivale ao this.contato que recebeu o registro
         });
 
