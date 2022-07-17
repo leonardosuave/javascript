@@ -2,7 +2,7 @@ import validator from "validator"; //Para validar email.
 
 export default class Contato {
     constructor(formClass) {
-        this.formContato = document.querySelector(formClass);
+        this.form = document.querySelector(formClass);
     }
 
     init() {
@@ -10,8 +10,8 @@ export default class Contato {
     }
 
     events() {
-        if(!this.formContato) return;
-        this.formContato.addEventListener('submit', e => {
+        if(!this.form) return;
+        this.form.addEventListener('submit', e => {
             this.handleSubmit(e)
         });
     };
@@ -23,15 +23,14 @@ export default class Contato {
         const checkContato = this.checkContatoValido()
 
         if(checkNome && checkContato) {
-            console.log('Enviado')
-            this.formContato.submit()
+            this.form.submit()
         }
     }
 
     checkContatoValido() {
 
-        const email = this.formContato.querySelector('.emailContato')
-        const telefone = this.formContato.querySelector('.telefoneContat')
+        const email = this.form.querySelector('.emailContato')
+        const telefone = this.form.querySelector('.telefoneContato')
 
         if(this.validaEmail(email) || this.validaTel(telefone)){
             return true
@@ -45,12 +44,11 @@ export default class Contato {
         let valid = true;
 
         //Para retirar os erros acumulados.
-        for(let errorText of this.formContato.querySelectorAll('.error-text')) {
+        for(let errorText of this.form.querySelectorAll('.error-text')) {
             errorText.remove()
         };
 
-        for(let campo of this.formContato.querySelectorAll('.form-contato')) {
-            console.log(campo)
+        for(let campo of this.form.querySelectorAll('.form-contato')) {
 
             //check nome
             if(campo.classList.contains('nomeContato')) {
@@ -65,10 +63,8 @@ export default class Contato {
         let valid = true
 
         if(!validator.isEmail(campo.value)){
-            this.criaErro(campo, 'E-mail inválido!')
             valid = false;
         }
-        console.log(valid)
         return valid; 
     }
 
@@ -78,7 +74,6 @@ export default class Contato {
         if(!campo.value) {
             valid = false
         };
-        console.log(valid)
         return valid
     }
 
@@ -89,7 +84,6 @@ export default class Contato {
             this.criaErro(campo, 'Nome inválido.')
             valid = false;
         }
-        console.log(valid)
         return valid; 
     }
 

@@ -32,7 +32,7 @@ var Contato = /*#__PURE__*/function () {
   function Contato(formClass) {
     _classCallCheck(this, Contato);
 
-    this.formContato = document.querySelector(formClass);
+    this.form = document.querySelector(formClass);
   }
 
   _createClass(Contato, [{
@@ -45,8 +45,8 @@ var Contato = /*#__PURE__*/function () {
     value: function events() {
       var _this = this;
 
-      if (!this.formContato) return;
-      this.formContato.addEventListener('submit', function (e) {
+      if (!this.form) return;
+      this.form.addEventListener('submit', function (e) {
         _this.handleSubmit(e);
       });
     }
@@ -58,15 +58,14 @@ var Contato = /*#__PURE__*/function () {
       var checkContato = this.checkContatoValido();
 
       if (checkNome && checkContato) {
-        console.log('Enviado');
-        this.formContato.submit();
+        this.form.submit();
       }
     }
   }, {
     key: "checkContatoValido",
     value: function checkContatoValido() {
-      var email = this.formContato.querySelector('.emailContato');
-      var telefone = this.formContato.querySelector('.telefoneContat');
+      var email = this.form.querySelector('.emailContato');
+      var telefone = this.form.querySelector('.telefoneContato');
 
       if (this.validaEmail(email) || this.validaTel(telefone)) {
         return true;
@@ -82,7 +81,7 @@ var Contato = /*#__PURE__*/function () {
     value: function checkNomeContato() {
       var valid = true; //Para retirar os erros acumulados.
 
-      var _iterator = _createForOfIteratorHelper(this.formContato.querySelectorAll('.error-text')),
+      var _iterator = _createForOfIteratorHelper(this.form.querySelectorAll('.error-text')),
           _step;
 
       try {
@@ -98,14 +97,14 @@ var Contato = /*#__PURE__*/function () {
 
       ;
 
-      var _iterator2 = _createForOfIteratorHelper(this.formContato.querySelectorAll('.form-contato')),
+      var _iterator2 = _createForOfIteratorHelper(this.form.querySelectorAll('.form-contato')),
           _step2;
 
       try {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
           var campo = _step2.value;
-          console.log(campo); //check nome
 
+          //check nome
           if (campo.classList.contains('nomeContato')) {
             if (!this.validaNome(campo)) valid = false;
           }
@@ -127,11 +126,9 @@ var Contato = /*#__PURE__*/function () {
       var valid = true;
 
       if (!validator__WEBPACK_IMPORTED_MODULE_0___default().isEmail(campo.value)) {
-        this.criaErro(campo, 'E-mail inválido!');
         valid = false;
       }
 
-      console.log(valid);
       return valid;
     }
   }, {
@@ -144,7 +141,6 @@ var Contato = /*#__PURE__*/function () {
       }
 
       ;
-      console.log(valid);
       return valid;
     }
   }, {
@@ -157,7 +153,6 @@ var Contato = /*#__PURE__*/function () {
         valid = false;
       }
 
-      console.log(valid);
       return valid;
     }
   }, {
@@ -28567,8 +28562,10 @@ var registrar = new _modules_registrar__WEBPACK_IMPORTED_MODULE_3__["default"]('
 registrar.init();
 var login = new _modules_login__WEBPACK_IMPORTED_MODULE_4__["default"]('.form-login');
 login.init();
-var contato = new _modules_contato__WEBPACK_IMPORTED_MODULE_5__["default"]('.form-contato');
-contato.init();
+var contatoReg = new _modules_contato__WEBPACK_IMPORTED_MODULE_5__["default"]('.form-contatoRg');
+contatoReg.init();
+var contatoEdit = new _modules_contato__WEBPACK_IMPORTED_MODULE_5__["default"]('.form-contatoEd');
+contatoEdit.init();
 })();
 
 /******/ })()

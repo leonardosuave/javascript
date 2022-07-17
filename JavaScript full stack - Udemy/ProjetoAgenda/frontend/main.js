@@ -13,8 +13,10 @@ registrar.init();
 const login = new Login('.form-login');
 login.init();
 
-const contato = new Contato('.form-contato');
-contato.init();
+const contatoReg = new Contato('.form-contatoRg');
+contatoReg.init();
+const contatoEdit = new Contato('.form-contatoEd');
+contatoEdit.init();
 
 
 
