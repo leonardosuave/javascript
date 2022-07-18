@@ -5,9 +5,8 @@ const route = express.Router();
 const homeController = require('./src/controllers/homeController');
 const loginController = require('./src/controllers/loginController');
 const contatoController = require('./src/controllers/contatoController');
-const agendaController = require('./src/controllers/agendaController')
 
-const {loginRequired, loginRequiredAgenda} = require('./src/middlewares/middleware');
+const {loginRequired} = require('./src/middlewares/middleware');
 
 //Routes pag inicial.
 route.get('/', homeController.index);
@@ -24,9 +23,6 @@ route.post('/contato/register', loginRequired, contatoController.register);
 route.get('/contato/index/:id', loginRequired, contatoController.editIndex); //Utilizado para recarregar dados de contatos para edição.
 route.post('/contato/edit/:id', loginRequired, contatoController.editContato);
 route.get('/contato/delete/:id', loginRequired, contatoController.delete)
-
-//Route da agenda final
-route.get('/agenda/index', loginRequiredAgenda, agendaController.index);
 
 
 //Exportar as route para o server.js.

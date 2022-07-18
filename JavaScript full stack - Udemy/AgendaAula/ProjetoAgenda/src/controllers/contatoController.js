@@ -20,7 +20,7 @@ exports.register = async (req, res) => {
         //Para contato registrado com sucesso.
         req.flash('success', 'Contato registrado!')
         req.session.save(function () {
-            return res.redirect(`/agenda/index`) // -> Após registrar o contato é redirecionado para a tela inicial da agenda
+            return res.redirect(`/`) // -> Após registrar o contato é redirecionado para a tela inicial da agenda
             
             //res.redirect(`/contato/index/${contato.contato._id}`)
             //Vai redirecionar para a edição do contato cadastrado.
@@ -65,7 +65,7 @@ exports.editContato = async (req, res) => {
         //Para contato editado com sucesso.
         req.flash('success', 'Contato editado com sucesso!')
         req.session.save(function () {
-            return res.redirect(`/agenda/index`)// ->Redireciona para a tela inicial da agenda.
+            return res.redirect(`/`)// ->Redireciona para a tela inicial da agenda.
 
             //res.redirect(`/contato/index/${contato.contato._id}`)  
             //Vai redirecionar para a edição do contato cadastrado.
@@ -82,12 +82,12 @@ exports.delete = async function(req, res) {
     if(!req.params.id) return res.render('404'); //Caso não receba o id do contato cadastrado
 
     //Aqui não precisa instânciar, pode atribuir await Contato.buscaPorId direto , ja que é uma constructor function e não class
-    const contatoDel = await Contato.delete(req.params.id) //Retorna os dados do contato que foi apagado.
+    const contatoDel = await Contato.delete(req.params.id) 
     if(!contatoDel) return res.render('404');
 
     req.flash('success', 'Contato apagado com sucesso.')
     req.session.save(() => {
-        return res.redirect(`/agenda/index`)
+        return res.redirect(`/`)
     });    
     
 }

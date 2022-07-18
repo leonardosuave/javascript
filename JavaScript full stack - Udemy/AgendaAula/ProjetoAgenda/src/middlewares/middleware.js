@@ -32,17 +32,7 @@ exports.loginRequired = (req, res, next) => {
       return;
     }
     next();
-};
-
-//Msg de login necessário especifico para acessar AGENDA.
-exports.loginRequiredAgenda = (req, res, next) => {
-    if(!req.session.user) {
-      req.flash('errors', 'Para acessar sua agenda faça o login.');
-      req.session.save(() => res.redirect('/login/index'));
-      return;
-    }
-    next();
-};
+  };
 
 //Posso passar mais de um middleware aqui por exports.xxx
 //Em server.js fazer require por associação via desestruturação tudo na mesma chave do exemplo, e depois atribuir o uso do express separadamente para cada middle desestruturado.
