@@ -1,7 +1,7 @@
 const Contato = require('../models/ContatoModel')
 
 exports.index = (req, res) => {
-    res.render('contato', {contatoBanco: {}}); //{contato} é enviado porque atribuiu contato.nome... no forms de cadastro de contatos para quando quiser editar ja apareça os valores ja cadastrados nos campos (1° vez vai em branco)
+    res.render('contato', {contatoBanco: {}}); //{contatoBanco} é enviado porque atribuiu contatoBanco.nome... no forms de cadastro de contatos para quando quiser editar ja apareça os valores ja cadastrados nos campos (1° vez vai em branco)
 };
 
 exports.register = async (req, res) => {
